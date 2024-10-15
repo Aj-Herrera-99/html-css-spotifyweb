@@ -15,6 +15,9 @@
     --p-block-sm: 10px;
     --gap-md: 20px;
     --gap-sm: 15px;
+    --gap-xs: 5px;
+    --text-smaller: .8rem;
+    --text-sm: .9rem;
 }
 
 /* debug */
@@ -83,6 +86,12 @@ button {
 .uppercase {
     text-transform: uppercase;
 }
+.text-sm {
+    font-size: var(--text-sm);
+}
+.text-smaller {
+    font-size: var(--text-smaller);
+}
 
 /* spacers */
 .p-inline-md {
@@ -107,6 +116,9 @@ button {
 
 .gap-sm {
     gap: var(--gap-sm);
+}
+.gap-xs {
+    gap: var(--gap-xs);
 }
 
 /* components */
@@ -135,10 +147,31 @@ body {
     flex: 1 1 auto;
 }
 
-/* upper content ASIDE */
+/* upper content SIDEBAR */
 #sidebar {
     background: var(--color-black);
     flex: 0 0 200px;
+}
+.sidebar-nav li {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    margin-block: 5px;
+    cursor: pointer;
+    position: relative;
+}
+.sidebar-nav li:first-child::before {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 100%;
+    border: 2.3px solid var(--color-highlight);
+    border-radius: 30px;
+    top: 0;
+    left: calc(0px - var(--p-inline-sm));
+}
+.sidebar-nav .image {
+    width: 1.5rem;
 }
 
 /* upper content MAIN */
