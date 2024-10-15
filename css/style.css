@@ -46,6 +46,14 @@ img {
     width: 100%;
 }
 
+button {
+    display: inline-block;
+    color: inherit;
+    border: none;
+    background: none;
+    cursor:pointer;
+}
+
 /* utilities */
 /* flex */
 .d-flex {
@@ -101,6 +109,14 @@ img {
     gap: var(--gap-sm);
 }
 
+/* components */
+.btn {
+    border: 1px solid var(--color-light);
+    padding: 13px 39px;
+    border-radius: 30px;
+    color: var(--color-light);
+}
+
 /* body */
 body {
     font-family: "Montserrat", sans-serif;
@@ -134,8 +150,18 @@ main {
 main .header {
     background: #0c1018;
     height: var(--height-header);
+    position: relative;
 }
-
+/* posizione bottone header */
+.header .btn {
+    position: absolute;
+    right: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.header .btn:hover {
+    scale: 105%;
+}
 /* main main-content */
 /* main content ha un altezza fissata calcolata come 
 spazio rimanente nella schermata tolti header e footer*/
@@ -248,7 +274,13 @@ MEDIA QUERIES
 }
 
 @media screen and (max-width: 768px) {
-
+    
+    /* HEADER */
+    .header .btn {
+        font-size: 70%;
+        padding: 10px 25px;
+    }
+    /* MAIN */
     /* dimensione minima alle card */
     .main-content .card {
         min-width: 90px;
@@ -272,6 +304,14 @@ MEDIA QUERIES
 /* big mobiles */
 @media screen and (max-width: 576px) {
 
+    /* HEADER */
+    .header .btn {
+        font-size: 60%;
+        max-width: 50%;
+        padding: 8px 20px;
+    }
+
+    /* MAIN-CONTENT */
     /* rimuovi dimensione minima alle card */
     .main-content .card {
         min-width: auto;
