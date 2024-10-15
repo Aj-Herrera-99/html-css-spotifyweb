@@ -20,25 +20,26 @@
         <div class="upper-content d-flex">
             <div id="sidebar" class="p-inline-sm text-smaller d-flex flex-col gap-sm">
                 <div class="logo">
-                    <img src="img/logo.svg" alt="logo">
+                    <img class="logo-big visibility" src="img/logo.svg" alt="logo">
+                    <img class="logo-small" src="img/logo-small.svg" alt="logo small">
                 </div>
                 <nav class="sidebar-nav">
                     <ul>
                         <li class="text-light">
                             <div class="image"><img src="img/home.svg" alt="home"></div>
-                            <span>Home</span>
+                            <span class="visibility">Home</span>
                         </li>
                         <li>
                             <div class="image"><img src="img/search.svg" alt="search"></div>
-                            <span>Cerca</span>
+                            <span class="visibility">Cerca</span>
                         </li>
                         <li>
                             <div class="image"><img src="img/libreria.svg" alt="libreria"></div>
-                            <span>La tua libreria</span>
+                            <span class="visibility">La tua libreria</span>
                         </li>
                     </ul>
                 </nav>
-                <section class="playlist">
+                <section class="playlist visibility">
                     <h5 class="uppercase text-light text-sm">playlist</h5>
                     <div class="d-flex items-center gap-sm text-sm">
                         <i class="fa-solid fa-square-plus crea"></i>
@@ -55,12 +56,18 @@
                     </ul>
                 </section>
                 <div class="profile-content">
-                    <div class="text-semibold d-flex gap-xs items-center  install">Installa app</div>
-                    <div class="profile pointer d-flex gap-sm items-center text-sm text-light text-bold">
+                    <div class="install text-semibold d-flex gap-xs items-center">
+                        <div class="image">
+                            <img src="img/download.svg" alt="download">
+                        </div>
+                        <span class="visibility">Installa app</span>
+                    </div>
+                    <hr class="visibility">
+                    <div class="profile d-flex gap-sm items-center text-sm text-light text-bold">
                         <div class="image">
                             <img src="img/profile.svg" alt="profile">
                         </div>
-                        <span>John Doe</span>
+                        <span class="visibility">John Doe</span>
                     </div>
                 </div>
             </div>
