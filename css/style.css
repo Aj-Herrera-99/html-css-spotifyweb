@@ -15,7 +15,7 @@
     --p-block-sm: 15px;
     --gap-lg: 40px;
     --gap-md: 20px;
-    --gap-sm: 15px;
+    --gap-sm: 10px;
     --gap-xs: 5px;
     --text-smaller: .8rem;
     --text-sm: .9rem;
@@ -76,6 +76,9 @@ button {
 
 .flex-col {
     flex-direction: column;
+}
+.flex-row-reverse {
+    flex-direction: row-reverse;
 }
 
 .content-between {
@@ -370,12 +373,15 @@ footer {
 
 footer > div:not(.center) {
     width: 25%;
-    border: 1px solid red;
 }
 
 /* footer left */
 .left .image {
     width: 3rem;
+}
+.left .icons i:hover {
+    cursor: pointer;
+    color: var(--color-light);
 }
 /* FOOTER CENTER */
 footer .center {
@@ -393,11 +399,14 @@ footer .controls > i {
 footer .controls :nth-child(3) {
     font-size: 2rem;
 }
+footer .controls :nth-child(3):hover {
+    scale: 110%;
+}
 footer .timebar {
     width: 100%;
 }
 
-footer .timebar div {
+footer .bar {
     background: #474747;
     border-radius: 30px;
     width: 60%;
@@ -405,16 +414,44 @@ footer .timebar div {
     position: relative;
     cursor: pointer;
 }
-footer .timebar div::before {
+footer .bar:before {
     content: "";
     display: block;
     width: 20%;
-    height: 3px;
+    height: 4px;
     border-radius: 30px;
     background: var(--color-lightgrey);
     position: absolute;
     top: 0;
     left: 0;
+}
+
+footer .bar:after {
+    content: "";
+    display: none;
+    background: var(--color-lightgrey);
+    border-radius: 50%;
+    width: .7rem;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 0;
+    left: 20%;
+    transform: translate(-50%, -30%);
+}
+footer .bar:hover::before {
+    background: var(--color-highlight);
+}
+footer .bar:hover::after{
+    display: block;
+}
+/* footer right */
+.right .bar {
+    width: 30%;
+}
+
+.right i:hover {
+    color: var(--color-light);
+    cursor: pointer;
 }
 
 
@@ -533,7 +570,6 @@ MEDIA QUERIES
     }
     footer > div {
         width: calc(100% / 3);
-        border: 1px solid red;
     }
 
      /* FOOTER */
