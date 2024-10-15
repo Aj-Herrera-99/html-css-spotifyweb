@@ -236,12 +236,19 @@
         </div>
         <footer class="d-flex content-between p-inline-sm p-block-sm">
             <div class="left">left</div>
-            <div class="center d-flex content-center">
-                <audio controls>
-                    <source src="horse.ogg" type="audio/ogg">
-                    <source src="horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                  </audio>
+            <div class="center d-flex flex-col items-center">
+                <div class="controls d-flex items-center">
+                    <i class="fa-solid fa-shuffle"></i>
+                    <i class="fa-solid fa-backward-step"></i>
+                    <i class="fa-regular fa-circle-play"></i>
+                    <i class="fa-solid fa-forward-step"></i>
+                    <i class="fa-solid fa-rotate-right"></i>
+                </div>
+                <div class="timebar">
+                    <span>0.25</span>
+                    <div></div>
+                    <span>4:35</span>
+                </div>
             </div>
             <div class="right">right</div>
         </footer>
