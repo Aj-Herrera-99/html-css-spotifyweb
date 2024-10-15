@@ -74,6 +74,9 @@ button {
 .content-center {
     justify-content: center;
 }
+.items-center {
+    align-items: center;
+}
 
 /* text format */
 .text-light {
@@ -151,7 +154,13 @@ body {
 #sidebar {
     background: var(--color-black);
     flex: 0 0 200px;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
+#sidebar .logo {
+    width: 80%;
+}
+/* sidebar nav */
 .sidebar-nav li {
     display: flex;
     align-items: center;
@@ -172,6 +181,16 @@ body {
 }
 .sidebar-nav .image {
     width: 1.5rem;
+}
+/* sidebar section playlist */
+.playlist .crea {
+    font-size: 2.3rem;
+}
+.playlist > div:nth-child(2) {
+    margin-block: 10px;
+}
+.playlist ul li {
+    margin-block: 10px;
 }
 
 /* upper content MAIN */
