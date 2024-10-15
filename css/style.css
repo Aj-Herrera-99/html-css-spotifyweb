@@ -153,6 +153,10 @@ main .main-content {
     color: var(--color-light);
 }
 
+.main-content .category-title h5 {
+    font-weight: 600;
+}
+
 /* copertina card */
 .card-list .card-image {
     position: relative;
@@ -166,7 +170,6 @@ main .main-content {
     bottom: 0;
     font-size: 4rem;
     color: var(--color-light);
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
