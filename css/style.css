@@ -58,6 +58,9 @@ button {
 }
 
 /* utilities */
+.pointer {
+    cursor: pointer;
+}
 /* flex */
 .d-flex {
     display: flex;
@@ -197,9 +200,11 @@ body {
 }
 .playlist > div:nth-child(2) {
     margin-block: 10px;
+    cursor: pointer;
 }
 .playlist ul li {
     margin-block: 15px;
+    cursor: pointer;
 }
 /* sidebar profile-content */
 .profile-content {
@@ -213,6 +218,7 @@ body {
     position: relative;
     width: 100%;
     order: 10;
+    cursor: pointer;
 }
 
 .profile-content .install::before {
@@ -233,16 +239,19 @@ body {
     bottom: -10px;
 }
 
-.profile-content .profile {
-}
-
 .profile-content .image {
     width: 1.5rem;
     background: var(--color-lightgrey);
     border-radius: 50%;
     overflow: hidden;
 }
-
+/* sidebar hover */
+.sidebar-nav li:hover,
+.playlist > div:nth-child(2):hover,
+.playlist ul li:hover,
+.profile-content > *:hover {
+    color: var(--color-light);
+}
 /* upper content MAIN */
 main {
     flex: 1 1 auto;
