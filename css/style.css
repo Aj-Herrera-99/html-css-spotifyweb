@@ -127,6 +127,11 @@ main .main-content {
     overflow-y: auto;
 }
 
+.main-content .category-title {
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
 .main-content h2 {
     color: var(--color-light);
 }
@@ -146,7 +151,14 @@ footer {
 MEDIA QUERIES
 *********************/
 /* tablets */
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+    /* ridimensiono larghezza delle cards per farcene stare 4 */
+    .main-content .card {
+        border: 1px solid green;
+        width: calc((100% - (3 * var(--gap-md))) / 4);
+    }
+}
+
 
 /* big mobiles */
 @media screen and (max-width: 576px) {
@@ -154,6 +166,17 @@ MEDIA QUERIES
     /* per schermi piu piccoli riduco la larghezza di side-bar */
     #sidebar {
         max-width: 33%;
+    }
+
+    /* riduco gap tra le cards */
+    .main-content .card-list {
+        gap: var(--gap-sm);
+    }
+
+    /* ridimensiono larghezza delle cards per farcene stare 2 */
+    .main-content .card {
+        border: 1px solid green;
+        width: calc((100% - var(--gap-sm)) / 2);
     }
 }
 
