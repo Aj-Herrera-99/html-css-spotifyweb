@@ -12,7 +12,8 @@
     --p-inline-md: 20px;
     --p-inline-sm: 10px;
     --p-block-md: 20px;
-    --p-block-sm: 10px;
+    --p-block-sm: 15px;
+    --gap-lg: 40px;
     --gap-md: 20px;
     --gap-sm: 15px;
     --gap-xs: 5px;
@@ -128,6 +129,9 @@ button {
     padding-block: var(--p-block-sm);
 }
 
+.gap-lg {
+    gap: var(--gap-lg);
+}
 .gap-md {
     gap: var(--gap-md);
 }
@@ -363,20 +367,31 @@ footer {
     flex: 0 0 var(--height-footer);
 }
 
-footer > div {
+
+footer > div:not(.center) {
+    width: 25%;
     border: 1px solid red;
-    flex-grow: 1;
 }
+
+/* footer left */
+.left .image {
+    width: 3rem;
+}
+/* FOOTER CENTER */
 footer .center {
-    flex-grow: 2;
+    flex-grow: 1;
 }
 
 footer .controls {
-    font-size: 1.2rem;
+    font-size: 1rem;
     gap: 30px;
 }
+
+footer .controls > i {
+    cursor: pointer;
+}
 footer .controls :nth-child(3) {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 footer .timebar {
     width: 100%;
@@ -385,9 +400,10 @@ footer .timebar {
 footer .timebar div {
     background: #474747;
     border-radius: 30px;
-    width: 80%;
+    width: 60%;
     height: 4px;
     position: relative;
+    cursor: pointer;
 }
 footer .timebar div::before {
     content: "";
@@ -447,6 +463,11 @@ MEDIA QUERIES
         margin-top: 10px;
         margin-bottom: 7px;
     }
+
+    /* FOOTER */
+    footer > .left {
+        gap: var(--gap-xs);
+    }
 }
 
 
@@ -475,6 +496,14 @@ MEDIA QUERIES
     .main-content .card {
         width: calc((100% - var(--gap-sm)) / 2);
     }
+    /* FOOTER */
+    #footer {
+        font-size: 65% ;
+    }
+    footer .controls {
+        font-size: 1rem;
+        gap: 15px;
+    }
 }
 
 /* mobiles */
@@ -497,5 +526,22 @@ MEDIA QUERIES
     /* ridimensionamento font-size */
     .main-content .main-nav {
         font-size: 70%;
+    }
+
+    #footer {
+        gap: 0;
+    }
+    footer > div {
+        width: calc(100% / 3);
+        border: 1px solid red;
+    }
+
+     /* FOOTER */
+    footer > .left > * {
+        gap: var(--gap-xs);
+    }
+
+    .left .image {
+        /* display: none; */
     }
 }

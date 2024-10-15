@@ -234,9 +234,23 @@
                 </div>
             </main>
         </div>
-        <footer class="d-flex content-between p-inline-sm p-block-sm text-smaller">
-            <div class="left">left</div>
-            <div class="center d-flex flex-col items-center text-light">
+        <footer id="footer" class="d-flex gap-lg content-between p-inline-sm p-block-sm text-smaller">
+            <div class="left d-flex flex-wrap items-center gap-md">
+                <div class="song d-flex items-center gap-sm">
+                    <div class="image">
+                        <img src="img/sinister.jpeg" alt="sinister">
+                    </div>
+                    <div class="song-name">
+                        <span class="text-light text-sm">Sinister</span><br>
+                        <span>Brano Nome</span>
+                    </div>
+                </div>
+                <div class="icons d-flex flex-wrap gap-sm">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-folder"></i>
+                </div>
+            </div>
+            <div class="center d-flex flex-col gap-sm items-center text-light">
                 <div class="controls d-flex items-center">
                     <i class="fa-solid fa-shuffle"></i>
                     <i class="fa-solid fa-backward-step"></i>
@@ -244,7 +258,7 @@
                     <i class="fa-solid fa-forward-step"></i>
                     <i class="fa-solid fa-rotate-right"></i>
                 </div>
-                <div class="timebar d-flex content-between items-center debug">
+                <div class="timebar d-flex content-center gap-xs items-center">
                     <span>0.25</span>
                     <div></div>
                     <span>4:35</span>
