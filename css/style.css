@@ -7,7 +7,7 @@
     --color-lightgrey: #c1c1c1;
     --color-highlight: #9ae22d;
     --color-red: #ca1717;
-    --height-footer: 100px;
+    --height-footer: 90px;
     --height-header: 80px;
     --p-inline-md: 20px;
     --p-inline-sm: 10px;
@@ -410,7 +410,7 @@ footer .bar {
     background: #474747;
     border-radius: 30px;
     width: 60%;
-    height: 4px;
+    height: 6px;
     position: relative;
     cursor: pointer;
 }
@@ -418,7 +418,7 @@ footer .bar:before {
     content: "";
     display: block;
     width: 20%;
-    height: 4px;
+    height: 6px;
     border-radius: 30px;
     background: var(--color-lightgrey);
     position: absolute;
@@ -447,6 +447,10 @@ footer .bar:hover::after{
 /* footer right */
 .right .bar {
     width: 30%;
+}
+
+.right i {
+    font-size: 1.1em;
 }
 
 .right i:hover {
@@ -576,8 +580,18 @@ MEDIA QUERIES
     footer > .left > * {
         gap: var(--gap-xs);
     }
+}
 
-    .left .image {
-        /* display: none; */
+@media screen and (max-width: 400px) {
+    /* footer */
+    .left .song-name {
+        display: none;
+    }
+    
+    .right .bar {
+        position: relative;
+        right: 10px;
+        rotate: -90deg;
+        
     }
 }
