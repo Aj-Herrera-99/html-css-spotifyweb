@@ -38,6 +38,7 @@ ul {
 a {
     text-decoration: none;
     color: inherit;
+    display: inline-block;
 }
 
 img {
@@ -70,6 +71,9 @@ img {
 
 .text-center {
     text-align: center;
+}
+.uppercase {
+    text-transform: uppercase;
 }
 
 /* spacers */
@@ -141,8 +145,30 @@ main .main-content {
     height: calc(100vh - (var(--height-header) + var(--height-footer)));
     overflow-y: auto;
 }
-
-/* CATEGORIA */
+/* MAIN-CONTENT NAV */
+.main-content .main-nav ul {
+    row-gap: 30px;
+}
+.main-content .main-nav li {
+    position: relative;
+}
+.main-content .main-nav li:hover {
+    color: var(--color-light);
+}
+.main-content .main-nav li a {
+    padding: 5px 10px;
+}
+/* solo il primo child della navbar */
+.main-content .main-nav li:first-child::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 30%;
+    border: 2px solid var(--color-highlight);
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* MAIN-CONTENT SECTIONS */
 .main-content .category-title {
     margin-top: 35px;
     margin-bottom: 25px;
@@ -189,6 +215,11 @@ main .main-content {
 .main-content .card {
     width: calc((100% - (5 * var(--gap-sm))) / 6);
 }
+/* section populars */
+.populars .card-image {
+    border-radius: 50%;
+    overflow: hidden;
+}
 
 /* footer */
 footer {
@@ -206,19 +237,28 @@ MEDIA QUERIES
     .main-content .card-title {
         font-size: 80%;
     }
+    .main-content .main-nav {
+        font-size: 90%;
+    }
 
     /* ridimensiono larghezza delle cards per farcene stare 4 */
     .main-content .card {
-        border: 1px solid green;
         width: calc((100% - (3 * var(--gap-md))) / 4);
     }
 }
 
 @media screen and (max-width: 768px) {
 
+    /* dimensione minima alle card */
+    .main-content .card {
+        min-width: 90px;
+    }
     /* ridimensionamento font-size */
     .main-content .card-title {
         font-size: 65%;
+    }
+    .main-content .main-nav {
+        font-size: 80%;
     }
 
     /* meno padding sul titolo playlist */
@@ -232,6 +272,11 @@ MEDIA QUERIES
 /* big mobiles */
 @media screen and (max-width: 576px) {
 
+    /* rimuovi dimensione minima alle card */
+    .main-content .card {
+        min-width: auto;
+    }
+
     /* per schermi piu piccoli riduco la larghezza di side-bar */
     #sidebar {
         max-width: 33%;
@@ -239,7 +284,6 @@ MEDIA QUERIES
 
     /* ridimensiono larghezza delle cards per farcene stare 2 */
     .main-content .card {
-        border: 1px solid green;
         width: calc((100% - var(--gap-sm)) / 2);
     }
 }
@@ -250,5 +294,9 @@ MEDIA QUERIES
     /* ulteriore riduzione della larghezza di side-bar */
     #sidebar {
         flex-basis: 20%;
+    }
+    /* ridimensionamento font-size */
+    .main-content .main-nav {
+        font-size: 70%;
     }
 }
