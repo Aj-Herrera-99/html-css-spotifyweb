@@ -9,6 +9,17 @@
     --color-red: #ca1717;
     --height-footer: 100px;
     --height-header: 80px;
+    --p-inline-md: 20px;
+    --p-inline-sm: 10px;
+    --p-block-md: 20px;
+    --p-block-sm: 10px;
+    --gap-md: 20px;
+    --gap-sm: 10px;
+}
+
+/* debug */
+.debug {
+    border: 1px solid red;
 }
 
 /* resets */
@@ -39,12 +50,39 @@ img {
 .d-flex {
     display: flex;
 }
+.flex-wrap {
+    flex-wrap: wrap;
+}
 .flex-col {
     flex-direction: column;
 }
-/* text color */
+.content-center {
+    justify-content: center;
+}
+
+/* text format */
 .text-light {
     color: var(--color-light);
+}
+/* spacers */
+.p-inline-md {
+    padding-inline: var(--p-inline-md);
+}
+.p-inline-sm {
+    padding-inline: var(--p-inline-sm);
+}
+
+.p-block-md {
+    padding-block: var(--p-block-md);
+}
+.p-block-sm {
+    padding-block: var(--p-block-sm);
+}
+.gap-md {
+    gap: var(--gap-md);
+}
+.gap-sm {
+    gap: var(--gap-sm);
 }
 
 /* body */
@@ -74,14 +112,28 @@ body {
 main {
     flex: 1 1 auto;
 }
+/* main header */
 main .header {
     background:#0c1018;
     height: var(--height-header);
 }
+/* main main-content */
+/* main content ha un altezza fissata calcolata come 
+spazio rimanente nella schermata tolti header e footer*/
+/* all'overflow del suo contenuto compare la barra di scorrimento */
 main .main-content {
     background: var(--color-dark);
     height: calc(100vh - (var(--height-header) + var(--height-footer)));
     overflow-y: auto;
+}
+
+.main-content h2 {
+    color: var(--color-light);
+}
+
+.main-content .card {
+    border: 1px solid green;
+    width: calc((100% - (5 * var(--gap-md))) / 6);
 }
 
 /* footer */
@@ -108,7 +160,7 @@ MEDIA QUERIES
 /* mobiles */
 @media screen and (max-width: 480px) {
 
-    /* per schermi piu piccoli riduco la larghezza di side-bar */
+    /* ulteriore riduzione della larghezza di side-bar */
     #sidebar {
         flex-basis: 20%;
     }
