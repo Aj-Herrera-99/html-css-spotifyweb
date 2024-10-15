@@ -14,7 +14,7 @@
     --p-block-md: 20px;
     --p-block-sm: 10px;
     --gap-md: 20px;
-    --gap-sm: 10px;
+    --gap-sm: 15px;
 }
 
 /* debug */
@@ -64,6 +64,9 @@ img {
 .text-light {
     color: var(--color-light);
 }
+.text-center {
+    text-align: center;
+}
 /* spacers */
 .p-inline-md {
     padding-inline: var(--p-inline-md);
@@ -106,7 +109,7 @@ body {
 /* upper content ASIDE */
 #sidebar {
     background: var(--color-black);
-    flex: 0 0 230px;
+    flex: 0 0 200px;
 }
 /* upper content MAIN */
 main {
@@ -132,13 +135,17 @@ main .main-content {
     margin-bottom: 25px;
 }
 
-.main-content h2 {
+.main-content .category-title h2, 
+.main-content .playlist-title {
     color: var(--color-light);
+}
+.main-content .playlist-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .main-content .card {
-    border: 1px solid green;
-    width: calc((100% - (5 * var(--gap-md))) / 6);
+    width: calc((100% - (5 * var(--gap-sm))) / 6);
 }
 
 /* footer */
@@ -151,11 +158,26 @@ footer {
 MEDIA QUERIES
 *********************/
 /* tablets */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
+    /* ridimensionamento font-size */
+    .main-content .card-title {
+        font-size: 80%;
+    }
     /* ridimensiono larghezza delle cards per farcene stare 4 */
     .main-content .card {
         border: 1px solid green;
         width: calc((100% - (3 * var(--gap-md))) / 4);
+    }
+}
+@media screen and (max-width: 768px) {
+    /* ridimensionamento font-size */
+    .main-content .card-title {
+        font-size: 65%;
+    }
+    /* meno padding sul titolo playlist */
+    .main-content .playlist-title {
+        margin-top: 10px;
+        margin-bottom: 7px;
     }
 }
 
@@ -166,11 +188,6 @@ MEDIA QUERIES
     /* per schermi piu piccoli riduco la larghezza di side-bar */
     #sidebar {
         max-width: 33%;
-    }
-
-    /* riduco gap tra le cards */
-    .main-content .card-list {
-        gap: var(--gap-sm);
     }
 
     /* ridimensiono larghezza delle cards per farcene stare 2 */
