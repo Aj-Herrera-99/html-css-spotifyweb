@@ -50,12 +50,15 @@ img {
 .d-flex {
     display: flex;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .flex-col {
     flex-direction: column;
 }
+
 .content-center {
     justify-content: center;
 }
@@ -64,13 +67,16 @@ img {
 .text-light {
     color: var(--color-light);
 }
+
 .text-center {
     text-align: center;
 }
+
 /* spacers */
 .p-inline-md {
     padding-inline: var(--p-inline-md);
 }
+
 .p-inline-sm {
     padding-inline: var(--p-inline-sm);
 }
@@ -78,12 +84,15 @@ img {
 .p-block-md {
     padding-block: var(--p-block-md);
 }
+
 .p-block-sm {
     padding-block: var(--p-block-sm);
 }
+
 .gap-md {
     gap: var(--gap-md);
 }
+
 .gap-sm {
     gap: var(--gap-sm);
 }
@@ -111,15 +120,18 @@ body {
     background: var(--color-black);
     flex: 0 0 200px;
 }
+
 /* upper content MAIN */
 main {
     flex: 1 1 auto;
 }
+
 /* main header */
 main .header {
-    background:#0c1018;
+    background: #0c1018;
     height: var(--height-header);
 }
+
 /* main main-content */
 /* main content ha un altezza fissata calcolata come 
 spazio rimanente nella schermata tolti header e footer*/
@@ -130,16 +142,43 @@ main .main-content {
     overflow-y: auto;
 }
 
+/* CATEGORIA */
 .main-content .category-title {
     margin-top: 35px;
     margin-bottom: 25px;
 }
 
-.main-content .category-title h2, 
+.main-content .category-title h2,
 .main-content .playlist-title {
     color: var(--color-light);
 }
-.main-content .playlist-title {
+
+/* copertina card */
+.card-list .card-image {
+    position: relative;
+}
+
+.card-list .card-image i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 4rem;
+    color: var(--color-light);
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+}
+
+.card-image:hover  i {
+    visibility: visible;
+}
+
+.card-list .playlist-title {
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -159,21 +198,26 @@ MEDIA QUERIES
 *********************/
 /* tablets */
 @media screen and (max-width: 992px) {
+
     /* ridimensionamento font-size */
     .main-content .card-title {
         font-size: 80%;
     }
+
     /* ridimensiono larghezza delle cards per farcene stare 4 */
     .main-content .card {
         border: 1px solid green;
         width: calc((100% - (3 * var(--gap-md))) / 4);
     }
 }
+
 @media screen and (max-width: 768px) {
+
     /* ridimensionamento font-size */
     .main-content .card-title {
         font-size: 65%;
     }
+
     /* meno padding sul titolo playlist */
     .main-content .playlist-title {
         margin-top: 10px;
