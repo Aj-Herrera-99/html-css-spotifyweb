@@ -13,6 +13,7 @@
     --p-inline-sm: 10px;
     --p-block-md: 20px;
     --p-block-sm: 15px;
+    --p-block-xs: 5px;
     --gap-lg: 40px;
     --gap-md: 20px;
     --gap-sm: 10px;
@@ -22,9 +23,9 @@
 }
 
 /* debug */
-.debug {
+/* .debug {
     border: 1px solid red;
-}
+} */
 
 /* resets */
 *,
@@ -59,9 +60,6 @@ button {
 }
 
 /* utilities */
-.pointer {
-    cursor: pointer;
-}
 
 .visibility {
     display: block;
@@ -142,6 +140,10 @@ button {
     padding-block: var(--p-block-sm);
 }
 
+.p-block-xs {
+    padding-block: var(--p-block-xs);
+}
+
 .gap-lg {
     gap: var(--gap-lg);
 }
@@ -158,13 +160,14 @@ button {
     gap: var(--gap-xs);
 }
 
-/* components */
+/* components, generals */
 .btn {
     border: 1px solid var(--color-light);
     padding: 13px 39px;
     border-radius: 30px;
     color: var(--color-light);
 }
+
 
 /* body */
 body {
@@ -176,23 +179,29 @@ body {
 
 /* wrapper */
 .wrapper {
-    height: 100vh;
+    height: 100dvh;
 }
 
 /* upper content */
 .upper-content {
-    max-height: calc(100vh - var(--height-footer));
+    max-height: calc(100% - var(--height-footer));
+    overflow: hidden;
+    /*consigliato*/
     flex: 1 1 auto;
 }
 
-/* upper content SIDEBAR */
+/*********************************************************
+
+SIDEBAR 
+
+***********************************************************/
 #sidebar {
     background: var(--color-black);
     flex: 0 0 200px;
     padding-top: 15px;
     padding-bottom: 5px;
     position: relative;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 #sidebar .logo {
@@ -203,13 +212,16 @@ body {
     display: none;
 }
 
+#sidebar>*:not(.logo) {
+    width: 100%;
+}
+
 /* sidebar nav */
 .sidebar-nav li {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: var(--gap-xs);
-    margin-block: 15px;
-    cursor: pointer;
     position: relative;
 }
 
@@ -229,40 +241,40 @@ body {
 }
 
 /* sidebar section playlist */
+
 .playlist .crea {
     font-size: 2.3rem;
 }
 
-.playlist>div:nth-child(2) {
-    margin-block: 10px;
-    cursor: pointer;
+.playlist ul {
+    height: 20em;
+    padding-inline: var(--p-inline-sm);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .playlist ul li {
-    margin-block: 15px;
-    cursor: pointer;
+    padding-block: var(--p-block-sm);
 }
 
 /* sidebar profile-content */
 .profile-content {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+}
+
+.profile-content>*:not(hr) {
+    margin-left: 10px;
 }
 
 .profile-content .install {
     position: relative;
-    width: 100%;
-    order: 10;
-    cursor: pointer;
 }
 
-
-.profile-content .profile {
-    order: -1;
-    cursor: pointer;
-}
 
 .profile-content .image {
     width: 1.5rem;
@@ -278,16 +290,23 @@ body {
 .sidebar-nav li:hover,
 .playlist>div:nth-child(2):hover,
 .playlist ul li:hover,
-.profile-content>*:hover {
+.profile-content>:not(hr):hover {
+    cursor: pointer;
     color: var(--color-light);
 }
 
 /* upper content MAIN */
 main {
     flex: 1 1 auto;
+    /* overflow: auto; */
+    /*per scrollbar anche header -> modificare position header in fixed in alto*/
 }
 
-/* main header */
+/*********************************************************
+
+MAIN HEADER 
+
+***********************************************************/
 main .header {
     background: #0c1018;
     height: var(--height-header);
@@ -306,13 +325,18 @@ main .header {
     scale: 105%;
 }
 
-/* main main-content */
+/*********************************************************
+
+MAIN CONTENT 
+
+***********************************************************/
+
 /* main content ha un altezza fissata calcolata come 
 spazio rimanente nella schermata tolti header e footer*/
 /* all'overflow del suo contenuto compare la barra di scorrimento */
 main .main-content {
     background: var(--color-dark);
-    height: calc(100vh - (var(--height-header) + var(--height-footer)));
+    height: calc(100dvh - (var(--height-header) + var(--height-footer)));
     overflow-y: auto;
 }
 
@@ -364,6 +388,7 @@ main .main-content {
     position: relative;
 }
 
+/* effetto layover sulla card*/
 .card-list .card-image i {
     position: absolute;
     top: 0;
@@ -388,6 +413,7 @@ main .main-content {
     margin-bottom: 10px;
 }
 
+/* su ogni riga ci stanno massimo 6 card gap inclusi */
 .main-content .card {
     width: calc((100% - (5 * var(--gap-sm))) / 6);
 }
@@ -398,7 +424,11 @@ main .main-content {
     overflow: hidden;
 }
 
-/* footer */
+/*********************************************************
+
+FOOTER 
+
+***********************************************************/
 footer {
     background: var(--color-darkgrey);
     flex: 0 0 var(--height-footer);
@@ -415,7 +445,6 @@ footer>div:not(.center) {
 }
 
 .left .icons i:hover {
-    cursor: pointer;
     color: var(--color-light);
 }
 
@@ -427,10 +456,6 @@ footer .center {
 footer .controls {
     font-size: 1rem;
     gap: 30px;
-}
-
-footer .controls>i {
-    cursor: pointer;
 }
 
 footer .controls :nth-child(3) {
@@ -451,7 +476,6 @@ footer .bar {
     width: 60%;
     height: 6px;
     position: relative;
-    cursor: pointer;
 }
 
 footer .bar:before {
@@ -498,22 +522,28 @@ footer .bar:hover::after {
 
 .right i:hover {
     color: var(--color-light);
+}
+
+/* footer general hovers */
+footer i,
+footer .bar {
     cursor: pointer;
 }
 
+
+/* SCROLLBAR */
 .main-content::-webkit-scrollbar,
-#sidebar::-webkit-scrollbar {
+.playlist ul::-webkit-scrollbar {
     width: 8px;
 }
 
 .main-content::-webkit-scrollbar-track,
-#sidebar::-webkit-scrollbar {
-    background-color: var(--color-black);
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+.playlist ul::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px rgb(0, 0, 0.5);
 }
 
 .main-content::-webkit-scrollbar-thumb,
-#sidebar::-webkit-scrollbar {
+.playlist ul::-webkit-scrollbar-thumb {
     background-color: var(--color-highlight);
     border-radius: 10px;
 }
@@ -524,6 +554,8 @@ MEDIA QUERIES
 *********************/
 /* tablets */
 @media screen and (max-width: 992px) {
+
+    /* MAIN CONTENT */
 
     /* ridimensionamento font-size */
     .main-content .card-title {
@@ -543,6 +575,7 @@ MEDIA QUERIES
 @media screen and (max-width: 768px) {
 
     /* HEADER */
+    /* ridimensionamento header button */
     .header .btn {
         font-size: 70%;
         padding: 10px 25px;
@@ -587,7 +620,8 @@ MEDIA QUERIES
     }
 
     /* MAIN-CONTENT */
-    /* rimuovi dimensione minima alle card */
+
+    /* rimuovi dimensione minima fissa alle card */
     .main-content .card {
         min-width: auto;
     }
@@ -603,6 +637,7 @@ MEDIA QUERIES
     }
 
     /* FOOTER */
+
     #footer {
         font-size: 65%;
     }
@@ -616,28 +651,41 @@ MEDIA QUERIES
 /* mobiles */
 @media screen and (max-width: 480px) {
 
-    /* ulteriore riduzione della larghezza di side-bar */
-    #sidebar {
-        max-width: fit-content;
-    }
-
     /* display none per tutti gli elementi a cui e attaccata visibility */
     .visibility {
         display: none;
     }
 
+    /* SIDEBAR */
+
+    /* ulteriore riduzione della larghezza di side-bar */
+    #sidebar {
+        max-width: min-content;
+    }
+
     #sidebar .logo {
-        width: 25px;
+        width: 1.7rem;
+        margin-bottom: 10px;
     }
 
     .logo-small {
         display: block;
     }
 
+    .sidebar-nav>* {
+        padding-block: var(--p-block-xs);
+    }
+
+    .profile-content>* {
+        margin-inline: auto;
+    }
+
     /* ridimensionamento font-size */
     .main-content .main-nav {
         font-size: 70%;
     }
+
+    /* FOOTER */
 
     #footer {
         gap: 0;
@@ -647,7 +695,6 @@ MEDIA QUERIES
         width: calc(100% / 3);
     }
 
-    /* FOOTER */
     footer>.left>* {
         gap: var(--gap-xs);
     }
@@ -663,7 +710,17 @@ MEDIA QUERIES
     .right .bar {
         position: relative;
         right: 10px;
-        rotate: -90deg;
+        transform: rotate(-90deg);
+    }
+}
 
+/* SPERIMENTALE */
+@media screen and (max-height: 700px) {
+    .playlist ul {
+        height: 9rem;
+    }
+
+    .playlist ul li {
+        padding-block: 10px;
     }
 }
