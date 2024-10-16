@@ -1,0 +1,93 @@
+/**********************************
+PERSONAL RANGE BAR
+************************************/
+footer .bar {
+    background: #474747;
+    border-radius: 30px;
+    width: 100%;
+    height: 6px;
+    position: relative;
+}
+
+footer .bar:before {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 6px;
+    border-radius: 30px;
+    background: var(--color-lightgrey);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+footer .bar:after {
+    content: "";
+    display: none;
+    background: var(--color-lightgrey);
+    border-radius: 50%;
+    width: .7rem;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 0;
+    left: 40%;
+    transform: translate(-50%, -30%);
+}
+
+footer .bar:hover::before {
+    background: var(--color-highlight);
+}
+
+footer .bar:hover::after {
+    display: block;
+}
+
+/***************************************************
+real range bar 
+**************************************************/
+.slidecontainer {
+    width: 60%;
+    /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    border-radius: 30px;
+    height: .7rem;
+    background: #474747;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    overflow: hidden;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--color-darkgrey);
+    width: .8rem;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: -25rem 0 0 24.3rem var(--color-highlight);
+    /* trick veramente stupido (solo visivo) -> aggiungo overflow hidden allo slider */
+
+}
+
+.slider::-moz-range-thumb {
+    background: var(--color-darkgrey);
+    width: .8rem;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: -25rem 0 0 24.3rem var(--color-highlight);
+
+}

@@ -486,47 +486,6 @@ footer .timebar {
     width: 100%;
 }
 
-footer .bar {
-    background: #474747;
-    border-radius: 30px;
-    width: 60%;
-    height: 6px;
-    position: relative;
-}
-
-footer .bar:before {
-    content: "";
-    display: block;
-    width: 20%;
-    height: 6px;
-    border-radius: 30px;
-    background: var(--color-lightgrey);
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-footer .bar:after {
-    content: "";
-    display: none;
-    background: var(--color-lightgrey);
-    border-radius: 50%;
-    width: .7rem;
-    aspect-ratio: 1;
-    position: absolute;
-    top: 0;
-    left: 20%;
-    transform: translate(-50%, -30%);
-}
-
-footer .bar:hover::before {
-    background: var(--color-highlight);
-}
-
-footer .bar:hover::after {
-    display: block;
-}
-
 /* footer right */
 .right .bar {
     width: 30%;

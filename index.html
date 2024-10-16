@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rangeStyle.css">
 </head>
 
 <body>
@@ -269,7 +270,11 @@
                 </div>
                 <div class="timebar d-flex content-center gap-xs items-center">
                     <span>0:25</span>
-                    <div class="bar"></div>
+                    <!-- range bar disegnata -->
+                    <!-- <div class="bar"></div> -->
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    </div>
                     <span>4:35</span>
                 </div>
             </div>
