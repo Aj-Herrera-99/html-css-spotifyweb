@@ -537,7 +537,9 @@ MEDIA QUERIES
     .main-content .main-nav {
         font-size: 90%;
     }
-
+    .main-content .card-list {
+        gap: var(--gap-md);
+    }
     /* ridimensiono larghezza delle cards per farcene stare 4 */
     .main-content .card {
         width: calc((100% - (3 * var(--gap-md))) / 4);
@@ -556,7 +558,17 @@ MEDIA QUERIES
     /* MAIN */
     /* dimensione minima alle card */
     .main-content .card {
-        min-width: 90px;
+        max-height: 190px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .main-content .card-list {
+        gap: var(--gap-sm);
+    }
+    /* ridimensiono larghezza delle cards per farcene stare 4 */
+    .main-content .card {
+        min-width: calc((100% - (3 * var(--gap-sm))) / 4);
     }
 
     /* ridimensionamento font-size */
@@ -603,9 +615,14 @@ MEDIA QUERIES
         width: 33%;
     }
 
+
+    .main-content .card-list {
+        gap: var(--gap-sm);
+    }
     /* ridimensiono larghezza delle cards per farcene stare 2 */
     .main-content .card {
         width: calc((100% - var(--gap-sm)) / 2);
+        max-height: 100%;
     }
 
     /* FOOTER */
