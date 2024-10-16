@@ -623,6 +623,11 @@ MEDIA QUERIES
 /* mobiles */
 @media screen and (max-width: 480px) {
 
+    :root {
+        --height-header: 60px;
+        /* --height-footer: 70px; */
+    }
+
     /* display none per tutti gli elementi a cui e attaccata visibility */
     .visibility {
         display: none;
