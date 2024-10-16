@@ -175,11 +175,13 @@ body {
     font-weight: normal;
     font-style: normal;
     color: var(--color-lightgrey);
+    overflow: hidden;
 }
 
 /* wrapper */
 .wrapper {
     height: 100dvh;
+    min-width: 230px;
 }
 
 /* upper content */
@@ -695,39 +697,62 @@ MEDIA QUERIES
     /* FOOTER */
 
     #footer {
-        gap: 0;
+        gap: var(--gap-md);
     }
 
-    /* footer>div {
-        width: calc(100% / 3);
-    } */
-
-    footer .left {
-
+    /* left */
+    footer > div:first-child {
+        width: 50%;
+        justify-content: space-between;
+    }
+    footer > div:first-child .image {
+        width: 3.5rem;
+    }
+    footer > div:first-child .icons {
+        font-size: 150%;
+        flex-direction: column;
+    }
+    /* center */
+    footer > div:nth-child(2) {
+        justify-content: center;
+    }
+    footer > div:nth-child(2)  .controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    footer > div:nth-child(2) .controls i {
+        font-size: 2rem;
+    }
+    /* right */
+    footer > div:last-child {
+        width: auto;
+        font-size: 150%;
+        justify-content: center;
+    }
+    footer > div:last-child .bar {
+        width: auto;
     }
 
-    footer .left>* {
-        gap: var(--gap-xs);
-    }
-
-    footer .controls i:not(:nth-child(3)),
+    footer .controls i:first-child,
+    footer .controls i:last-child,
     footer .timebar,
-    footer .right i:not(:first-child) {
+    footer .right i:not(:first-child),
+    footer .right .bar {
         display: none;
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 300px) {
 
-    /* footer */
-    .left .song-name {
+    /* FOOTER */
+    /* left */
+    .left .icons {
         display: none;
     }
 
-    .right .bar {
-        position: relative;
-        right: 10px;
-        transform: rotate(-90deg);
+    /* right */
+    footer > div:last-child {
+        display: none;
     }
 }
 
