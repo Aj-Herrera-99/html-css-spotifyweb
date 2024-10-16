@@ -201,7 +201,12 @@ SIDEBAR
     padding-top: 15px;
     padding-bottom: 5px;
     position: relative;
+    min-height: 260px;
     z-index: 10000;
+}
+
+.sidebar-top {
+    flex-grow: 1;
 }
 
 #sidebar .logo {
@@ -260,27 +265,22 @@ SIDEBAR
     padding-block: var(--p-block-sm);
 }
 
-/* sidebar profile-content */
-.profile-content {
+/* SIDEBAR-BOTTOM */
+.sidebar-bottom {
     position: absolute;
+    bottom: 0;
     left: 0;
-    bottom: 5px;
+    padding-block: var(--p-block-xs);
+    background: var(--color-black);
+    padding-inline: var(--p-inline-sm);
+
 }
 
-.profile-content>*:not(hr) {
-    margin-left: 10px;
-}
-
-.profile-content .install {
-    position: relative;
-}
-
-
-.profile-content .image {
+.sidebar-bottom .image {
     width: 1.5rem;
 }
 
-.profile-content .profile .image {
+.sidebar-bottom .profile .image {
     background: var(--color-lightgrey);
     border-radius: 50%;
     overflow: hidden;
@@ -290,7 +290,7 @@ SIDEBAR
 .sidebar-nav li:hover,
 .playlist>div:nth-child(2):hover,
 .playlist ul li:hover,
-.profile-content>:not(hr):hover {
+.sidebar-bottom>:not(hr):hover {
     cursor: pointer;
     color: var(--color-light);
 }
@@ -687,10 +687,6 @@ MEDIA QUERIES
         padding-block: var(--p-block-xs);
     }
 
-    .profile-content>* {
-        margin-inline: auto;
-    }
-
     /* ridimensionamento font-size */
     .main-content .main-nav {
         font-size: 70%;
@@ -702,12 +698,22 @@ MEDIA QUERIES
         gap: 0;
     }
 
-    footer>div {
+    /* footer>div {
         width: calc(100% / 3);
+    } */
+
+    footer .left {
+
     }
 
-    footer>.left>* {
+    footer .left>* {
         gap: var(--gap-xs);
+    }
+
+    footer .controls i:not(:nth-child(3)),
+    footer .timebar,
+    footer .right i:not(:first-child) {
+        display: none;
     }
 }
 
