@@ -363,8 +363,7 @@ main .main-content {
     position: relative;
 }
 
-.main-content .main-nav li:hover,
-.main-nav li:first-child {
+.main-content .main-nav li:hover {
     color: var(--color-light);
 }
 
@@ -372,14 +371,25 @@ main .main-content {
     padding: 5px 10px;
 }
 
-/* solo il primo child della navbar */
-.main-content .main-nav li:first-child::after {
+.main-content .main-nav li input {
+    display: none;
+}
+
+.main-content .main-nav li label {
+    cursor: pointer;
+}
+
+.main-content .main-nav li input:checked ~ a {
+    color: var(--color-light);
+}
+.main-content .main-nav li input:checked ~ a::after{
     position: absolute;
     display: block;
     content: "";
-    width: 30%;
+    width: 70%;
     border: 2px solid var(--color-highlight);
     left: 50%;
+    bottom: -2px;
     transform: translateX(-50%);
 }
 
