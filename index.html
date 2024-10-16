@@ -27,16 +27,25 @@
                     </div>
                     <ul class="sidebar-nav d-flex flex-col gap-sm debug">
                         <li class="text-light">
-                            <div class="image"><img src="img/home.svg" alt="home"></div>
-                            <span class="visibility">Home</span>
+                            <input type="radio" name="side" id="home" value="home" checked>
+                            <label for="home">
+                                <div class="image"><img src="img/home.svg" alt="home"></div>
+                                <span class="visibility">Home</span>
+                            </label>
                         </li>
                         <li>
-                            <div class="image"><img src="img/search.svg" alt="search"></div>
-                            <span class="visibility">Cerca</span>
+                            <input type="radio" name="side" id="search" value="search">
+                            <label for="search">
+                                <div class="image"><img src="img/search.svg" alt="search"></div>
+                                <span class="visibility">Cerca</span>
+                            </label>
                         </li>
                         <li>
-                            <div class="image"><img src="img/libreria.svg" alt="libreria"></div>
-                            <span class="visibility">La tua libreria</span>
+                            <input type="radio" name="side" id="library" value="library">
+                            <label for="library">
+                                <div class="image"><img src="img/libreria.svg" alt="libreria"></div>
+                                <span class="visibility">La tua libreria</span>
+                            </label>
                         </li>
                     </ul>
                     <section class="playlist visibility">
@@ -89,41 +98,29 @@
                     <nav class="main-nav d-flex content-center uppercase">
                         <ul class="d-flex flex-wrap content-center">
                             <li>
-                                <input type="radio" name="nav" id="evidenza" value="evidenza">
-                                <a href="">
-                                    <label for="evidenza">evidenza</label>
-                                </a>
-                                
+                                <input type="radio" name="nav" id="evidenza" value="evidenza" checked>
+                                <label for="evidenza">evidenza</label>
+
                             </li>
                             <li>
                                 <input type="radio" name="nav" id="podcast" value="podcast">
-                                <a href="">
-                                    <label for="podcast">podcast</label>
-                                </a>
+                                <label for="podcast">podcast</label>
                             </li>
                             <li>
                                 <input type="radio" name="nav" id="classifiche" value="classifiche">
-                                <a href="">
-                                    <label for="classifiche">classifiche</label>
-                                </a>
+                                <label for="classifiche">classifiche</label>
                             </li>
                             <li>
                                 <input type="radio" name="nav" id="generi" value="generi">
-                                <a href="">
-                                    <label for="generi">generi e mood</label>
-                                </a>
+                                <label for="generi">generi e mood</label>
                             </li>
                             <li>
                                 <input type="radio" name="nav" id="uscite" value="uscite">
-                                <a href="">
-                                    <label for="uscite">nuove uscite</label>
-                                </a>
+                                <label for="uscite">nuove uscite</label>
                             </li>
                             <li>
                                 <input type="radio" name="nav" id="scopri" value="scopri">
-                                <a href="">
-                                    <label for="scopri">scopri</label>
-                                </a>
+                                <label for="scopri">scopri</label>
                             </li>
                         </ul>
                     </nav>

@@ -59,6 +59,15 @@ button {
     cursor: pointer;
 }
 
+input[type="radio"] {
+    display: none;
+}
+
+.wrapper label {
+    display: block;
+    cursor: pointer;
+}
+
 /* utilities */
 
 .visibility {
@@ -224,7 +233,7 @@ SIDEBAR
 }
 
 /* sidebar nav */
-.sidebar-nav li {
+.sidebar-nav li label {
     width: 100%;
     display: flex;
     align-items: center;
@@ -232,7 +241,7 @@ SIDEBAR
     position: relative;
 }
 
-.sidebar-nav li:first-child::before {
+.sidebar-nav li input:checked ~ label::before {
     position: absolute;
     content: "";
     display: block;
@@ -367,29 +376,25 @@ main .main-content {
     color: var(--color-light);
 }
 
-.main-content .main-nav li a {
+.main-content .main-nav li label {
     padding: 5px 10px;
 }
 
-.main-content .main-nav li input {
-    display: none;
-}
 
-.main-content .main-nav li label {
-    cursor: pointer;
-}
 
-.main-content .main-nav li input:checked ~ a {
+
+
+.main-content .main-nav li input:checked ~ label {
     color: var(--color-light);
 }
-.main-content .main-nav li input:checked ~ a::after{
+.main-content .main-nav li input:checked ~ label::after{
     position: absolute;
     display: block;
     content: "";
     width: 70%;
     border: 2px solid var(--color-highlight);
     left: 50%;
-    bottom: -2px;
+    bottom: -4px;
     transform: translateX(-50%);
 }
 
