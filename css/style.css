@@ -241,6 +241,10 @@ SIDEBAR
     position: relative;
 }
 
+.sidebar-nav li input:checked ~ label {
+    color: var(--color-light);
+}
+
 .sidebar-nav li input:checked ~ label::before {
     position: absolute;
     content: "";
@@ -299,7 +303,7 @@ SIDEBAR
 
 /* sidebar hover */
 .sidebar-nav li:hover,
-.playlist>div:nth-child(2):hover,
+.playlist>div>div:nth-child(2):hover,
 .playlist ul li:hover,
 .sidebar-bottom>:not(hr):hover {
     cursor: pointer;
