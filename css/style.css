@@ -1,4 +1,25 @@
-/* root */
+/** =============================================================================
+
+** ********************* INDICE:
+** - RIGA 7: :root, debug, resets, components
+** - RIGA 90: macrostruttura
+**
+** - RIGA 130: sidebar
+** - RIGA 256: main
+** - RIGA 485: footer 
+**
+** - RIGA 555: MEDIA QUERIES
+** - riga 560: max-width:992px 
+** - riga 640: max-width:768px
+** - riga 690: max-width:576px
+** - riga 735: max-width:480px
+** - riga 800: max-width:450px
+** - riga 866: max-width:320px
+** - riga 900: max-height:700px
+** - riga 915: landscape mobiles
+
+**============================================================================= */
+
 :root {
     --color-dark: #141922;
     --color-darkgrey: #282828;
@@ -70,108 +91,7 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-/* utilities */
-
-.visibility {
-    display: block;
-}
-
-/* flex */
-.d-flex {
-    display: flex;
-}
-
-.flex-wrap {
-    flex-wrap: wrap;
-}
-
-.flex-col {
-    flex-direction: column;
-}
-
-.flex-row-reverse {
-    flex-direction: row-reverse;
-}
-
-.content-between {
-    justify-content: space-between;
-}
-
-.content-center {
-    justify-content: center;
-}
-
-.items-center {
-    align-items: center;
-}
-
-/* text format */
-.text-light {
-    color: var(--color-light);
-}
-
-.text-center {
-    text-align: center;
-}
-
-.uppercase {
-    text-transform: uppercase;
-}
-
-.text-sm {
-    font-size: var(--text-sm);
-}
-
-.text-smaller {
-    font-size: var(--text-smaller);
-}
-
-.text-semibold {
-    font-weight: 600;
-}
-
-.text-bold {
-    font-weight: 800;
-}
-
-/* spacers */
-.p-inline-md {
-    padding-inline: var(--p-inline-md);
-}
-
-.p-inline-sm {
-    padding-inline: var(--p-inline-sm);
-}
-
-.p-block-md {
-    padding-block: var(--p-block-md);
-}
-
-.p-block-sm {
-    padding-block: var(--p-block-sm);
-}
-
-.p-block-xs {
-    padding-block: var(--p-block-xs);
-}
-
-.gap-lg {
-    gap: var(--gap-lg);
-}
-
-.gap-md {
-    gap: var(--gap-md);
-}
-
-.gap-sm {
-    gap: var(--gap-sm);
-}
-
-.gap-xs {
-    gap: var(--gap-xs);
-}
-
-/* components, generals */
+/* components */
 .btn {
     border: 1px solid var(--color-light);
     padding: 13px 39px;
@@ -179,11 +99,14 @@ input[type="checkbox"] {
     color: var(--color-light);
 }
 
-/******************************************************************
 
-MACROSTRUTTURA
 
-******************************************************************/
+/** =============================================================================
+
+**================ MACROSTRUTTURA
+
+**============================================================================= */
+
 /* body */
 body {
     font-family: "Montserrat", sans-serif;
@@ -197,14 +120,14 @@ body {
 .wrapper {
     height: 100dvh;
     min-width: 230px;
+    overflow: hidden;
 }
 
 /* upper content */
 .upper-content {
     max-height: calc(100% - var(--height-footer));
-    overflow: hidden;
-    /*consigliato*/
     flex: 1 1 auto;
+    overflow: hidden;
 }
 
 /* footer */
@@ -213,18 +136,23 @@ footer {
     flex: 0 0 var(--height-footer);
     position: relative;
     z-index: 10000;
+    overflow: hidden;
 }
 
-/*********************************************************
 
-SIDEBAR 
 
-***********************************************************/
+/** =============================================================================
+
+**============================== SIDEBAR
+
+**============================================================================= */
+
+/** MACROSTRUTTURA SIDEBAR*/
 #sidebar {
     background: var(--color-black);
     flex: 0 0 200px;
-    padding-top: 15px;
-    padding-bottom: 5px;
+    padding-top: var(--p-block-sm);
+    padding-bottom: var(--p-block-xs);
     position: relative;
     min-height: 260px;
     z-index: 10000;
@@ -234,16 +162,29 @@ SIDEBAR
     flex-grow: 1;
 }
 
+.sidebar-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-block: var(--p-block-xs);
+    background: var(--color-black);
+    padding-inline: var(--p-inline-sm);
+}
+
+
+
+/** sidebar-top */
 #sidebar .logo {
     width: 80%;
 }
 
+/*? filter preso da un filter generator */
 #sidebar .logo:hover {
     cursor: pointer;
     filter: brightness(0) saturate(100%) invert(69%) sepia(28%) saturate(1163%) hue-rotate(86deg) brightness(94%) contrast(92%);
 }
 
-
+/* visibile solo per mobile  */
 .logo-small {
     display: none;
 }
@@ -265,6 +206,7 @@ SIDEBAR
     color: var(--color-light);
 }
 
+/* al click sull'elemento, compare un bordo laterale: trick radio-checked */
 .sidebar-nav li input:checked~label::before {
     position: absolute;
     content: "";
@@ -281,11 +223,15 @@ SIDEBAR
 }
 
 /* sidebar section playlist */
-
 .playlist .crea {
     font-size: 2.3rem;
 }
 
+.playlist >:nth-child(1) > :last-child {
+    margin-block: var(--p-block-xs);
+}
+
+/* effetto libreria */
 .playlist ul {
     height: 20em;
     padding-inline: var(--p-inline-sm);
@@ -300,17 +246,9 @@ SIDEBAR
     padding-block: var(--p-block-sm);
 }
 
-/* SIDEBAR-BOTTOM */
-.sidebar-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-block: var(--p-block-xs);
-    background: var(--color-black);
-    padding-inline: var(--p-inline-sm);
 
-}
 
+/** sidebar-bottom */
 .sidebar-bottom .image {
     width: 1.5rem;
 }
@@ -330,24 +268,19 @@ SIDEBAR
     color: var(--color-light);
 }
 
-/* upper content MAIN */
+/** =============================================================================
+
+** ****************** MAIN 
+
+**============================================================================= */
 main {
     flex: 1 1 auto;
-    /*per scrollbar anche header
-    * decommentare overflow auto in main-content
-    * modificare position header in fixed in alto
-    * -> dare del padding-top alto quanto l'header + il p-block-md al main-content */
 }
 
-/*********************************************************
-
-MAIN HEADER 
-
-***********************************************************/
+/** MAIN HEADER */
 main .header {
     background: #0c1018aa;
     height: var(--height-header);
-    /* per scrollbar anche header */
     width: 100%;
     position: fixed;
     top: 0;
@@ -355,7 +288,6 @@ main .header {
     z-index: 1000;
     box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.5);
     backdrop-filter: blur(5px);
-    /* overflow: hidden; */
 }
 
 /* posizione bottone header */
@@ -373,23 +305,19 @@ main .header {
     box-shadow: -2px 2px 10px 0px rgba(255, 255, 255, 0.4);
 }
 
-/*********************************************************
 
-MAIN CONTENT 
 
-***********************************************************/
-
+/** MAIN CONTENT */
 /* main content ha un altezza fissata calcolata come 
 spazio rimanente nella schermata tolto footer*/
 main .main-content {
     background: var(--color-dark);
-    /* per scrollbar anche header */
     height: calc(100dvh - (var(--height-footer)));
     padding-top: calc(var(--height-header) + var(--p-block-md));
     overflow-y: auto;
 }
 
-/* MAIN-CONTENT NAV */
+/* main-content nav */
 .main-content .main-nav ul {
     row-gap: 30px;
 }
@@ -410,6 +338,7 @@ main .main-content {
     color: var(--color-light);
 }
 
+/* al click sull'elemento compare un bordo inferiore: trick radio-checked */
 .main-content .main-nav li input:checked~label::after {
     position: absolute;
     display: block;
@@ -421,7 +350,8 @@ main .main-content {
     transform: translateX(-50%);
 }
 
-/* MAIN-CONTENT SECTIONS */
+/** MAIN-CONTENT SECTIONS */
+/* generals */
 .main-content .category-title {
     margin-top: 35px;
     margin-bottom: 25px;
@@ -434,6 +364,7 @@ main .main-content {
 
 .main-content .category-title h5 {
     font-weight: 600;
+    margin-top: var(--p-inline-sm);
 }
 
 /* su ogni riga ci stanno massimo 6 card gap inclusi */
@@ -441,29 +372,28 @@ main .main-content {
     width: calc((100% - (5 * var(--gap-sm))) / 6);
 }
 
+/** recently-played */
 /* lista cards */
 .recents .card-list {
-    /* border: 1px solid green; */
+    width: 100%;
     padding-top: var(--p-block-xs);
     flex-wrap: nowrap;
-    width: 100%;
+    align-items: flex-start;
     position: relative;
     overflow-x: hidden;
-    align-items: flex-start;
 }
 
 /* animazione slider  */
 .recents .card {
-    /* border: 1px solid red; */
-    width: calc(100% / var(--quantity));
+    --card-width: calc(100% / var(--quantity));
+    width: var(--card-width);
     position: relative;
-    left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
     --alpha: 0.4;
-    /** coefficiente per la velocita di animazione range (0, 1] */
+    /*! coefficiente per la velocita di animazione range (0, 1] */
     --speed: calc(var(--quantity) * 10s * var(--alpha));
     animation: slider var(--speed) linear infinite;
     animation-delay: calc((var(--speed) / var(--quantity)) * ((var(--position) - var(--quantity))));
-    /** delay-card1 < delay-card2 < . . . < delay-last-card = 0 */
+    /*! delay-card1 < delay-card2 < . . . < delay-last-card = 0 */
     transition: all .3s ease;
 
 }
@@ -471,22 +401,23 @@ main .main-content {
 @keyframes slider {
     from {
         left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
-        /** 100% - (la posizione - 1 per la fetta di percentuale di ogni card */
-        /* tutto a destra */
+        /** 100% meno (la posizione - 1 per la fetta di percentuale di ogni card */
+        /* sposto da sinistra fino a spingere le cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno destro del container padre */
     }
 
     to {
         left: calc((100% / var(--quantity)) * (var(--position) * -1));
         /** spinge da sinistra quanto? quanto la dimensione singola della card per un offset dato dal numero di cards precedenti*/
+        /* NB: questo left sarà dunque un valore negativo -> spingo lE cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno sinistro del container padre*/
     }
 }
 
 /*? come faccio a mettere in pausa lo slider sull'hover di una card? */
-
 /** seleziona i siblings che hanno un sibling successivo in hover  */
 .recents .card:has(~ :hover) {
     animation-play-state: paused;
 }
+
 /** seleziona il child in hover  */
 .recents .card:hover {
     animation-play-state: paused;
@@ -497,7 +428,7 @@ main .main-content {
     animation-play-state: paused;
 }
 
-/** ogni card ha un div figlio anim che permette all'hover su di essa un'altra animazione senza sovrascrivere slider */
+/* ogni card ha un div wrapper figlio anim che permette all'hover su di essa un'altra animazione senza sovrascrivere slider */
 .recents .anim:hover {
     animation: bounce 2.5s ease-out infinite;
 }
@@ -517,6 +448,7 @@ main .main-content {
 
 }
 
+/*? for testing cards animation */
 /* .inv:not(li:nth-child(6)) {
     visibility: hidden;
 } */
@@ -528,7 +460,6 @@ main .main-content {
     overflow: hidden;
     box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.4);
 }
-
 
 /* effetto layover sulla card*/
 .card-list .card-image i {
@@ -556,24 +487,26 @@ main .main-content {
     margin-bottom: 10px;
 }
 
-/* section populars */
+/** section suggestions */
+
+/** section populars */
 .populars .card-image {
     border-radius: 50%;
     overflow: hidden;
 }
 
-/*********************************************************
-
-FOOTER 
-
-***********************************************************/
 
 
+/** =============================================================================
+
+** ******************* FOOTER
+
+**============================================================================= */
 footer>div:not(.center) {
     width: 25%;
 }
 
-/* footer left */
+/** footer left */
 .left .image {
     width: 3rem;
     border-radius: 4px;
@@ -584,15 +517,17 @@ footer>div:not(.center) {
     color: var(--color-light);
 }
 
+/* se il cuoricino non è checkato (rosso), all'hover cambia color */
 .icons input:not(:checked)~label:hover {
     color: var(--color-light);
 }
 
+/* al click sul cuoricino, diventa rosso: trick radio checked */
 .icons input:checked~label {
     color: red;
 }
 
-/* FOOTER CENTER */
+/** footer center */
 footer .center {
     flex-grow: 1;
 }
@@ -606,7 +541,7 @@ footer .controls :nth-child(3) {
     font-size: 2rem;
 }
 
-footer .controls :nth-child(3):hover {
+footer .controls i:hover {
     scale: 110%;
 }
 
@@ -614,8 +549,7 @@ footer .timebar {
     width: 100%;
 }
 
-/* footer right */
-
+/** footer right */
 .right i {
     font-size: 1.1em;
 }
@@ -631,33 +565,23 @@ footer .bar {
 }
 
 
-/* SCROLLBAR */
-::-webkit-scrollbar {
-    width: 8px;
-}
 
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 10px rgb(0, 0, 0.5);
-}
+/** =============================================================================
 
-::-webkit-scrollbar-thumb {
-    background-color: var(--color-highlight);
-    border-radius: 10px;
-}
+** ******************** MEDIA QUERIES *******************************************
 
-
-/**********************
-MEDIA QUERIES
-*********************/
+**============================================================================= */
 /* tablets */
 @media screen and (max-width: 992px) {
 
     :root {
         --height-footer: 130px;
-
     }
 
-    /* SIDEBAR */
+    /** =========================================================================
+    **  SIDEBAR 
+    **========================================================================= */
+    /** sidebar top*/
     .sidebar-top {
         gap: var(--gap-lg);
     }
@@ -671,8 +595,9 @@ MEDIA QUERIES
         margin-block: var(--p-block-sm);
     }
 
-    /* MAIN CONTENT */
-
+    /** =========================================================================
+    ** MAIN CONTENT 
+    **========================================================================= */
     .recents .card-list {
         flex-wrap: wrap;
         min-width: auto;
@@ -683,20 +608,7 @@ MEDIA QUERIES
     .recents .card {
         width: calc((100% - (3 * var(--gap-md))) / 4);
     }
-
-    /* tolgo animazione slider da 992px in giu */
-    .recents .card {
-        position: static;
-        animation: none;
-        /* usato per animazione */
-        /* padding-inline: 0; */
-    }
-
-    /* tolgo animazione bounce */
-    .recents .anim:hover {
-        animation: none;
-    }
-
+    
     /* ridimensionamento font-size */
     .main-content .card-title {
         font-size: 80%;
@@ -710,8 +622,20 @@ MEDIA QUERIES
         gap: var(--gap-md);
     }
 
+    /* tolgo animazione slider da 992px in giu */
+    .recents .card {
+        position: static;
+        animation: none;
+    }
 
-    /* footer */
+    /* tolgo animazione bounce */
+    .recents .anim:hover {
+        animation: none;
+    }
+
+    /** =========================================================================
+    ** FOOTER 
+    **========================================================================= */
     #footer {
         font-size: 1rem;
         padding-inline: var(--p-inline-md);
@@ -728,36 +652,35 @@ MEDIA QUERIES
 
 @media screen and (max-width: 768px) {
 
-    /* HEADER */
+    /** =========================================================================
+    ** HEADER 
+    **========================================================================= */
     /* ridimensionamento header button */
     .header .btn {
         font-size: 70%;
         padding: 10px 25px;
     }
 
-    /* MAIN */
-    /* dimensione minima alle card */
-    .main-content .card {
-        max-height: 190px;
-        overflow: hidden;
-    }
-
-    .main-content .card-list {
-        gap: var(--gap-sm);
-    }
-
-    /* ridimensiono larghezza delle cards per farcene stare 4 */
-    .main-content .card {
-        min-width: calc((100% - (3 * var(--gap-sm))) / 4);
-    }
-
+    /** =========================================================================
+    **  MAIN CONTENT
+    **========================================================================= */
     /* ridimensionamento font-size */
+    .main-content .main-nav {
+        font-size: 80%;
+    }
+
     .main-content .card-title {
         font-size: 70%;
     }
-
-    .main-content .main-nav {
-        font-size: 80%;
+     
+    .main-content .card-list {
+        gap: var(--gap-sm);
+    }
+    /* dimensione minima alle card, ridimensiono larghezza delle cards per farcene stare 4 */
+    .main-content .card {
+        min-width: calc((100% - (3 * var(--gap-sm))) / 4);
+        max-height: 190px;
+        overflow: hidden;
     }
 
     /* meno padding sul titolo playlist */
@@ -766,7 +689,9 @@ MEDIA QUERIES
         margin-bottom: 7px;
     }
 
-    /* FOOTER */
+    /** =========================================================================
+    ** FOOTER 
+    **========================================================================= */
     footer>.left {
         gap: var(--gap-xs);
     }
@@ -776,18 +701,23 @@ MEDIA QUERIES
 /* mini tablets */
 @media screen and (max-width: 576px) {
 
-    /* HEADER */
+    /** =========================================================================
+    ** MAIN HEADER 
+    **========================================================================= */
     .header .btn {
         font-size: 60%;
         max-width: 50%;
         padding: 8px 20px;
     }
 
-    /* MAIN-CONTENT */
-
+    /** =========================================================================
+    **  MAIN CONTENT
+    **========================================================================= */
     /* rimuovi dimensione minima fissa alle card */
     .main-content .card {
         min-width: auto;
+        width: calc((100% - var(--gap-sm)) / 2);
+        max-height: 100%;
     }
 
     /* per schermi piu piccoli riduco la larghezza di side-bar */
@@ -795,19 +725,13 @@ MEDIA QUERIES
         width: 33%;
     }
 
-
     .main-content .card-list {
         gap: var(--gap-sm);
     }
 
-    /* ridimensiono larghezza delle cards per farcene stare 2 */
-    .main-content .card {
-        width: calc((100% - var(--gap-sm)) / 2);
-        max-height: 100%;
-    }
-
-    /* FOOTER */
-
+    /** =========================================================================
+    ** FOOTER 
+    **========================================================================= */
     #footer {
         font-size: 65%;
     }
@@ -826,16 +750,27 @@ MEDIA QUERIES
         --height-footer: 80px;
     }
 
-    /* display none per tutti gli elementi a cui e attaccata visibility */
+    /** display none per tutti gli elementi a cui e attaccata visibility */
     .visibility {
         display: none;
     }
 
-    /* SIDEBAR */
-
+    /** =========================================================================
+    ** SIDEBAR 
+    **========================================================================= */
     /* ulteriore riduzione della larghezza di side-bar */
     #sidebar {
         max-width: min-content;
+    }
+
+    #sidebar .logo {
+        width: 1.7rem;
+        margin-bottom: 10px;
+    }
+
+    /* logo small ora appare */
+    .logo-small {
+        display: block;
     }
 
     .sidebar-top {
@@ -846,25 +781,21 @@ MEDIA QUERIES
         gap: var(--gap-xs);
     }
 
-    #sidebar .logo {
-        width: 1.7rem;
-        margin-bottom: 10px;
-    }
-
-    .logo-small {
-        display: block;
-    }
-
     .sidebar-nav>* {
         padding-block: var(--p-block-xs);
     }
 
+    /** =========================================================================
+    **  MAIN CONTENT
+    **========================================================================= */
     /* ridimensionamento font-size */
     .main-content .main-nav {
         font-size: 70%;
     }
 
-    /* FOOTER */
+    /** =========================================================================
+    **  FOOTER
+    **========================================================================= */
     #footer {
         gap: var(--gap-md);
     }
@@ -876,22 +807,21 @@ MEDIA QUERIES
     footer>div:nth-child(2) .controls i:nth-child(3) {
         font-size: 2rem;
     }
-
-
 }
 
 /* mobiles */
 @media screen and (max-width: 450px) {
 
-    /* FOOTER */
-    /* UI UX specifica ai mobile */
+    /** =========================================================================
+    **  FOOTER
+    **========================================================================= */
+    /** UI UX specifica ai mobile */
     #footer {
         gap: var(--gap-md);
         padding-block: var(--p-block-xs);
-
     }
 
-    /* left */
+    /** left */
     footer>div:first-child {
         width: 50%;
         justify-content: space-between;
@@ -906,7 +836,7 @@ MEDIA QUERIES
         flex-direction: column;
     }
 
-    /* center */
+    /** center */
     footer>div:nth-child(2) {
         justify-content: center;
     }
@@ -920,7 +850,7 @@ MEDIA QUERIES
         font-size: 1.5rem;
     }
 
-    /* right */
+    /** right */
     footer>div:last-child {
         width: auto;
         font-size: 150%;
@@ -931,6 +861,7 @@ MEDIA QUERIES
         width: auto;
     }
 
+    /* elementi invisibili */
     footer .controls i:first-child,
     footer .controls i:last-child,
     footer .timebar,
@@ -947,7 +878,7 @@ MEDIA QUERIES
         --height-footer: 50px;
     }
 
-    /* MAIN HEADER */
+    /** MAIN HEADER */
     main .header {
         display: none;
     }
@@ -956,7 +887,7 @@ MEDIA QUERIES
         padding-top: var(--p-block-md);
     }
 
-    /* FOOTER */
+    /** FOOTER */
     #footer {
         padding-block: var(--p-block-xs);
     }
@@ -994,7 +925,7 @@ MEDIA QUERIES
         --height-footer: 80px;
     }
 
-    /* MAIN HEADER */
+    /** MAIN HEADER */
     main .header {
         display: none;
     }
@@ -1003,8 +934,8 @@ MEDIA QUERIES
         padding-top: var(--p-block-md);
     }
 
-    /* in landscape (mobiles) la sidebar è scrollabile */
-    /* SIDEBAR */
+    /** in landscape (mobiles) la sidebar è scrollabile */
+    /** SIDEBAR */
     #sidebar {
         min-height: auto;
         overflow: auto;
@@ -1018,7 +949,7 @@ MEDIA QUERIES
         position: static;
     }
 
-    /* FOOTER */
+    /** FOOTER */
     #footer {
         min-height: 0;
         padding-block: 0;

@@ -12,9 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrollbarStyle.css">
     <link rel="stylesheet" href="css/rangeStyle.css">
+    <link rel="stylesheet" href="css/props.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
+<!-- ===========================================================================
+| WRAPPER -> UPPERCONTENT, FOOTER
+| UPPERCONTENT -> SIDEBAR, MAIN __ SIDEBAR -> SIDEBARTOP, SIDEBARBOTTOM __ MAIN -> MAINHEADER, MAINCONTENT
+| FOOTER -> LEFT, CENTER, RIGHT
+=========================================================================== -->
 
 <body>
     <div class="wrapper d-flex flex-col">
@@ -129,8 +137,7 @@
                         <div class="category-title">
                             <h2>Recently played</h2>
                         </div>
-                        <ul class="card-list d-flex flex-wrap gap-sm text-center"
-                            style="--quantity: 6">
+                        <ul class="card-list d-flex flex-wrap gap-sm text-center" style="--quantity: 6">
                             <li class="card inv" style="--position: 1">
                                 <a href="#" class="anim">
                                     <div class="card-image">
@@ -285,7 +292,7 @@
                     </div>
                 </div>
                 <div class="icons d-flex flex-wrap gap-sm">
-                    <input type="checkbox" name="heart" id="heart" value="heart" >
+                    <input type="checkbox" name="heart" id="heart" value="heart">
                     <label for="heart">
                         <i class="fa-regular fa-heart"></i>
                     </label>
@@ -302,8 +309,6 @@
                 </div>
                 <div class="timebar d-flex content-center gap-xs items-center">
                     <span>0:25</span>
-                    <!-- range bar disegnata -->
-                    <!-- <div class="bar"></div> -->
                     <div class="slidecontainer">
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                     </div>
