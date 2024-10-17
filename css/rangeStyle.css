@@ -15,7 +15,7 @@ footer .bar {
     position: relative;
 }
 
-footer .bar:before {
+footer .bar::before {
     content: "";
     display: block;
     width: 40%;
@@ -27,7 +27,7 @@ footer .bar:before {
     left: 0;
 }
 
-footer .bar:after {
+footer .bar::after {
     content: "";
     display: none;
     background: var(--color-lightgrey);

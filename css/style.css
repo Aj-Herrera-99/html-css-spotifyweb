@@ -179,7 +179,11 @@ input[type="checkbox"] {
     color: var(--color-light);
 }
 
+/******************************************************************
 
+MACROSTRUTTURA
+
+******************************************************************/
 /* body */
 body {
     font-family: "Montserrat", sans-serif;
@@ -201,6 +205,14 @@ body {
     overflow: hidden;
     /*consigliato*/
     flex: 1 1 auto;
+}
+
+/* footer */
+footer {
+    background: var(--color-darkgrey);
+    flex: 0 0 var(--height-footer);
+    position: relative;
+    z-index: 10000;
 }
 
 /*********************************************************
@@ -471,12 +483,6 @@ main .main-content {
 FOOTER 
 
 ***********************************************************/
-footer {
-    background: var(--color-darkgrey);
-    flex: 0 0 var(--height-footer);
-    position: relative;
-        z-index: 10000;
-}
 
 
 footer>div:not(.center) {
@@ -769,6 +775,7 @@ MEDIA QUERIES
 
 
 }
+
 /* mobiles */
 @media screen and (max-width: 450px) {
 
