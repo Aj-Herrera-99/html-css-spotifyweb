@@ -449,7 +449,7 @@ main .main-content {
     width: 100%;
     position: relative;
     overflow-x: hidden;
-
+    align-items: flex-start;
 }
 
 /* animazione slider  */
@@ -458,36 +458,60 @@ main .main-content {
     width: calc(100% / var(--quantity));
     position: relative;
     left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
-    --alpha: 3;
-    --speed: calc(var(--quantity) * 1s * var(--alpha));
-    animation: myScroll var(--speed)  linear infinite;
+    --alpha: 0.4;
+    /** coefficiente per la velocita di animazione range (0, 1] */
+    --speed: calc(var(--quantity) * 10s * var(--alpha));
+    animation: slider var(--speed) linear infinite;
     animation-delay: calc((var(--speed) / var(--quantity)) * ((var(--position) - var(--quantity))));
+    /** delay-card1 < delay-card2 < . . . < delay-last-card = 0 */
     transition: all .3s ease;
+
 }
 
-@keyframes myScroll {
+@keyframes slider {
     from {
         left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
+        /** 100% - (la posizione - 1 per la fetta di percentuale di ogni card */
+        /* tutto a destra */
     }
 
     to {
         left: calc((100% / var(--quantity)) * (var(--position) * -1));
+        /** spinge da sinistra quanto? quanto la dimensione singola della card per un offset dato dal numero di cards precedenti*/
     }
 }
 
-.recents .card-list:hover .card {
+/*? come faccio a mettere in pausa lo slider sull'hover di una card? */
+
+/** seleziona i siblings che hanno un sibling successivo in hover  */
+.recents .card:has(~ :hover) {
     animation-play-state: paused;
 }
+/** seleziona il child in hover  */
+.recents .card:hover {
+    animation-play-state: paused;
+}
+
+/** seleziona tutti i siblings successivi al sibling in hover */
+.recents .card:hover~.card {
+    animation-play-state: paused;
+}
+
+/** ogni card ha un div figlio anim che permette all'hover su di essa un'altra animazione senza sovrascrivere slider */
 .recents .anim:hover {
     animation: bounce 2.5s ease-out infinite;
 }
 
 @keyframes bounce {
 
-    0%, 50%, 100% {
+    0%,
+    50%,
+    100% {
         transform: translateY(0px);
     }
-    25%, 75% {
+
+    25%,
+    75% {
         transform: translateY(-5px);
     }
 
