@@ -448,7 +448,7 @@ main .main-content {
     flex-wrap: nowrap;
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 
 }
 
@@ -458,8 +458,10 @@ main .main-content {
     width: calc(100% / var(--quantity));
     position: relative;
     left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
-    animation: myScroll 10s linear infinite;
-    animation-delay: calc((10s / var(--quantity)) * (var(--position) - 1));
+    --alpha: 3;
+    --speed: calc(var(--quantity) * 1s * var(--alpha));
+    animation: myScroll var(--speed)  linear infinite;
+    animation-delay: calc((var(--speed) / var(--quantity)) * ((var(--position) - var(--quantity))));
     transition: all .3s ease;
 }
 
@@ -664,6 +666,11 @@ MEDIA QUERIES
         animation: none;
         /* usato per animazione */
         /* padding-inline: 0; */
+    }
+
+    /* tolgo animazione bounce */
+    .recents .anim:hover {
+        animation: none;
     }
 
     /* ridimensionamento font-size */
