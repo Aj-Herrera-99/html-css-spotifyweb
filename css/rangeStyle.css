@@ -1,7 +1,13 @@
 /**********************************
 PERSONAL RANGE BAR
 ************************************/
+footer .bar-container {
+    padding-block: var(--p-block-xs);
+    width: 40%;
+    cursor: pointer;
+}
 footer .bar {
+    display: block;
     background: #474747;
     border-radius: 30px;
     width: 100%;
@@ -34,11 +40,11 @@ footer .bar:after {
     transform: translate(-50%, -30%);
 }
 
-footer .bar:hover::before {
+footer .bar-container:hover .bar::before {
     background: var(--color-highlight);
 }
 
-footer .bar:hover::after {
+footer .bar-container:hover .bar::after {
     display: block;
 }
 
@@ -46,43 +52,14 @@ footer .bar:hover::after {
 real range bar 
 **************************************************/
 .slidecontainer {
-    width: 60%;
+    width: 70%;
     /* Width of the outside container */
 }
 
 /* The slider itself */
 .slider {
-    -webkit-appearance: none;
-    appearance: none;
+    -webkit-appearance: auto;
+    appearance: auto;
     width: 100%;
-    border-radius: 30px;
-    height: .7rem;
-    background: #474747;
-    outline: none;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    overflow: hidden;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    background: var(--color-darkgrey);
-    width: .8rem;
-    aspect-ratio: 1;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: -25rem 0 0 24.3rem var(--color-highlight);
-    /* trick veramente stupido (solo visivo) -> aggiungo overflow hidden allo slider */
-
-}
-
-.slider::-moz-range-thumb {
-    background: var(--color-darkgrey);
-    width: .8rem;
-    aspect-ratio: 1;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: -25rem 0 0 24.3rem var(--color-highlight);
-
+    accent-color: var(--color-highlight);
 }
