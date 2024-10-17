@@ -448,7 +448,7 @@ main .main-content {
     flex-wrap: nowrap;
     width: 100%;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
 
 }
 
@@ -476,29 +476,16 @@ main .main-content {
 .recents .card-list:hover .card {
     animation-play-state: paused;
 }
-
-.recents .anim {
-    border: 1px solid green;
-}
 .recents .anim:hover {
-    animation-play-state: running;
     animation: bounce 2.5s ease-out infinite;
-}
-
-.recents .card:hover {
-    animation: myScroll 10s linear infinite;
 }
 
 @keyframes bounce {
 
-    0%,
-    50%,
-    100% {
-        transform: translateY(0px)
+    0%, 50%, 100% {
+        transform: translateY(0px);
     }
-
-    25%,
-    75% {
+    25%, 75% {
         transform: translateY(-5px);
     }
 
