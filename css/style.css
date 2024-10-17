@@ -23,9 +23,9 @@
 }
 
 /* debug */
-/* .debug {
+.debug {
     border: 1px solid red;
-} */
+}
 
 /* resets */
 *,
@@ -436,10 +436,86 @@ main .main-content {
     font-weight: 600;
 }
 
+/* su ogni riga ci stanno massimo 6 card gap inclusi */
+.main-content .card {
+    width: calc((100% - (5 * var(--gap-sm))) / 6);
+}
+
+/* lista cards */
+.recents .card-list {
+    /* border: 1px solid green; */
+    padding-top: var(--p-block-xs);
+    flex-wrap: nowrap;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+
+}
+
+/* animazione slider  */
+.recents .card {
+    /* border: 1px solid red; */
+    width: calc(100% / var(--quantity));
+    position: relative;
+    left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
+    animation: myScroll 10s linear infinite;
+    animation-delay: calc((10s / var(--quantity)) * (var(--position) - 1));
+    transition: all .3s ease;
+}
+
+@keyframes myScroll {
+    from {
+        left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
+    }
+
+    to {
+        left: calc((100% / var(--quantity)) * (var(--position) * -1));
+    }
+}
+
+.recents .card-list:hover .card {
+    animation-play-state: paused;
+}
+
+.recents .anim {
+    border: 1px solid green;
+}
+.recents .anim:hover {
+    animation-play-state: running;
+    animation: bounce 2.5s ease-out infinite;
+}
+
+.recents .card:hover {
+    animation: myScroll 10s linear infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    50%,
+    100% {
+        transform: translateY(0px)
+    }
+
+    25%,
+    75% {
+        transform: translateY(-5px);
+    }
+
+}
+
+/* .inv:not(li:nth-child(6)) {
+    visibility: hidden;
+} */
+
 /* copertina card */
 .card-list .card-image {
     position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.4);
 }
+
 
 /* effetto layover sulla card*/
 .card-list .card-image i {
@@ -465,11 +541,6 @@ main .main-content {
 .card-list .playlist-title {
     margin-top: 20px;
     margin-bottom: 10px;
-}
-
-/* su ogni riga ci stanno massimo 6 card gap inclusi */
-.main-content .card {
-    width: calc((100% - (5 * var(--gap-sm))) / 6);
 }
 
 /* section populars */
@@ -589,6 +660,25 @@ MEDIA QUERIES
 
     /* MAIN CONTENT */
 
+    .recents .card-list {
+        flex-wrap: wrap;
+        min-width: auto;
+    }
+
+    /* ridimensiono larghezza delle cards per farcene stare 4 */
+    .main-content .card,
+    .recents .card {
+        width: calc((100% - (3 * var(--gap-md))) / 4);
+    }
+
+    /* tolgo animazione slider da 992px in giu */
+    .recents .card {
+        position: static;
+        animation: none;
+        /* usato per animazione */
+        /* padding-inline: 0; */
+    }
+
     /* ridimensionamento font-size */
     .main-content .card-title {
         font-size: 80%;
@@ -602,10 +692,6 @@ MEDIA QUERIES
         gap: var(--gap-md);
     }
 
-    /* ridimensiono larghezza delle cards per farcene stare 4 */
-    .main-content .card {
-        width: calc((100% - (3 * var(--gap-md))) / 4);
-    }
 
     /* footer */
     #footer {
