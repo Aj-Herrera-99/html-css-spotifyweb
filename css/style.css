@@ -54,12 +54,14 @@ img {
 button {
     display: inline-block;
     color: inherit;
+    font-family: inherit;
     border: none;
     background: none;
     cursor: pointer;
 }
 
-input[type="radio"] {
+input[type="radio"],
+input[type="checkbox"] {
     display: none;
 }
 
@@ -355,6 +357,8 @@ main .header {
 
 .header .btn:hover {
     scale: 105%;
+    text-shadow: -2px 2px 9px white;
+    box-shadow: -2px 2px 10px 0px rgba(255, 255, 255, 0.4);
 }
 
 /*********************************************************
@@ -389,10 +393,6 @@ main .main-content {
 .main-content .main-nav li label {
     padding: 5px 10px;
 }
-
-
-
-
 
 .main-content .main-nav li input:checked~label {
     color: var(--color-light);
@@ -474,6 +474,8 @@ FOOTER
 footer {
     background: var(--color-darkgrey);
     flex: 0 0 var(--height-footer);
+    position: relative;
+        z-index: 10000;
 }
 
 
@@ -484,10 +486,20 @@ footer>div:not(.center) {
 /* footer left */
 .left .image {
     width: 3rem;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.left .icons i:hover {
+.left .icons>i:last-child:hover {
     color: var(--color-light);
+}
+
+.icons input:not(:checked)~label:hover {
+    color: var(--color-light);
+}
+
+.icons input:checked~label {
+    color: red;
 }
 
 /* FOOTER CENTER */
@@ -513,9 +525,6 @@ footer .timebar {
 }
 
 /* footer right */
-.right .bar {
-    width: 30%;
-}
 
 .right i {
     font-size: 1.1em;
@@ -553,6 +562,25 @@ MEDIA QUERIES
 /* tablets */
 @media screen and (max-width: 992px) {
 
+    :root {
+        --height-footer: 130px;
+
+    }
+
+    /* SIDEBAR */
+    .sidebar-top {
+        gap: var(--gap-lg);
+    }
+
+    .sidebar-nav {
+        gap: var(--gap-md);
+    }
+
+    /* crea playlist */
+    .playlist> :nth-child(1)> :last-child {
+        margin-block: var(--p-block-sm);
+    }
+
     /* MAIN CONTENT */
 
     /* ridimensionamento font-size */
@@ -572,6 +600,20 @@ MEDIA QUERIES
     .main-content .card {
         width: calc((100% - (3 * var(--gap-md))) / 4);
     }
+
+    /* footer */
+    #footer {
+        font-size: 1rem;
+        padding-inline: var(--p-inline-md);
+    }
+
+    .center {
+        justify-content: center;
+    }
+
+    footer .controls {
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -588,7 +630,6 @@ MEDIA QUERIES
     .main-content .card {
         max-height: 190px;
         overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .main-content .card-list {
@@ -602,7 +643,7 @@ MEDIA QUERIES
 
     /* ridimensionamento font-size */
     .main-content .card-title {
-        font-size: 65%;
+        font-size: 70%;
     }
 
     .main-content .main-nav {
@@ -622,7 +663,7 @@ MEDIA QUERIES
 }
 
 
-/* big mobiles */
+/* mini tablets */
 @media screen and (max-width: 576px) {
 
     /* HEADER */
@@ -667,12 +708,12 @@ MEDIA QUERIES
     }
 }
 
-/* mobiles */
+/*big mobiles */
 @media screen and (max-width: 480px) {
 
     :root {
         --height-header: 60px;
-        /* --height-footer: 70px; */
+        --height-footer: 80px;
     }
 
     /* display none per tutti gli elementi a cui e attaccata visibility */
@@ -685,6 +726,14 @@ MEDIA QUERIES
     /* ulteriore riduzione della larghezza di side-bar */
     #sidebar {
         max-width: min-content;
+    }
+
+    .sidebar-top {
+        gap: var(--gap-sm);
+    }
+
+    .sidebar-nav {
+        gap: var(--gap-xs);
     }
 
     #sidebar .logo {
@@ -706,9 +755,29 @@ MEDIA QUERIES
     }
 
     /* FOOTER */
-
     #footer {
         gap: var(--gap-md);
+    }
+
+    footer .controls {
+        font-size: var(--text-smaller);
+    }
+
+    footer>div:nth-child(2) .controls i:nth-child(3) {
+        font-size: 2rem;
+    }
+
+
+}
+/* mobiles */
+@media screen and (max-width: 450px) {
+
+    /* FOOTER */
+    /* UI UX specifica ai mobile */
+    #footer {
+        gap: var(--gap-md);
+        padding-block: var(--p-block-xs);
+
     }
 
     /* left */
@@ -718,7 +787,7 @@ MEDIA QUERIES
     }
 
     footer>div:first-child .image {
-        width: 3.5rem;
+        width: 3.2rem;
     }
 
     footer>div:first-child .icons {
@@ -737,7 +806,7 @@ MEDIA QUERIES
     }
 
     footer>div:nth-child(2) .controls i {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 
     /* right */
@@ -760,15 +829,32 @@ MEDIA QUERIES
     }
 }
 
-@media screen and (max-width: 300px) {
+/* smartphone ancora piu piccoli es: iphone 5 */
+@media screen and (max-width: 320px) {
+
+    :root {
+        --height-footer: 50px;
+    }
 
     /* MAIN HEADER */
     main .header {
         display: none;
     }
 
+    main .main-content {
+        padding-top: var(--p-block-md);
+    }
+
     /* FOOTER */
+    #footer {
+        padding-block: var(--p-block-xs);
+    }
+
     /* left */
+    #footer .left .image {
+        width: 2.5rem;
+    }
+
     .left .icons {
         display: none;
     }
@@ -790,11 +876,40 @@ MEDIA QUERIES
     }
 }
 
-@media screen and (max-height: 170px) {
+/* landscape */
+@media screen and (max-height: 576px) and (max-width: 950px) {
+
+    :root {
+        --height-footer: 80px;
+    }
 
     /* MAIN HEADER */
     main .header {
         display: none;
     }
 
+    main .main-content {
+        padding-top: var(--p-block-md);
+    }
+
+    /* in landscape (mobiles) la sidebar è scrollabile */
+    /* SIDEBAR */
+    #sidebar {
+        min-height: auto;
+        overflow: auto;
+    }
+
+    .playlist ul {
+        display: none;
+    }
+
+    .sidebar-bottom {
+        position: static;
+    }
+
+    /* FOOTER */
+    #footer {
+        min-height: 0;
+        padding-block: 0;
+    }
 }
