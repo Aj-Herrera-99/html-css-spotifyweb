@@ -25,6 +25,8 @@
 =========================================================================== -->
 
 <body>
+    <input type="checkbox" name="theme" id="theme" value="theme">
+
     <div class="wrapper d-flex flex-col">
         <div class="upper-content d-flex">
             <div id="sidebar" class="p-inline-sm text-smaller d-flex flex-col content-between">
@@ -320,9 +322,14 @@
                     <div class="bar"></div>
                 </div>
                 <div class="d-flex gap-sm flex-wrap flex-row-reverse">
+                    
                     <i class="fa-solid fa-volume-low"></i>
                     <i class="fa-solid fa-display"></i>
                     <i class="fa-solid fa-list-ul"></i>
+                    <label id="switch-label" for="theme">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </label>
+                    
                 </div>
             </div>
         </footer>

@@ -21,7 +21,7 @@ footer .bar::before {
     width: 40%;
     height: 6px;
     border-radius: 30px;
-    background: var(--color-lightgrey);
+    background: var(--secondary-bg);
     position: absolute;
     top: 0;
     left: 0;
@@ -30,7 +30,7 @@ footer .bar::before {
 footer .bar::after {
     content: "";
     display: none;
-    background: var(--color-lightgrey);
+    background: var(--secondary-bg);
     border-radius: 50%;
     width: .7rem;
     aspect-ratio: 1;
@@ -41,7 +41,7 @@ footer .bar::after {
 }
 
 footer .bar-container:hover .bar::before {
-    background: var(--color-highlight);
+    background: var(--highlight);
 }
 
 footer .bar-container:hover .bar::after {
@@ -61,5 +61,5 @@ real range bar
     -webkit-appearance: auto;
     appearance: auto;
     width: 100%;
-    accent-color: var(--color-highlight);
+    accent-color: var(--highlight);
 }

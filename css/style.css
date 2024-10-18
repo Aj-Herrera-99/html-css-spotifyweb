@@ -2,32 +2,15 @@
 
 ** ********************* INDICE:
 ** - RIGA 7: :root, debug, resets, components
-** - RIGA 90: macrostruttura
-**
-** - RIGA 130: sidebar
-** - RIGA 256: main
-** - RIGA 485: footer 
-**
-** - RIGA 555: MEDIA QUERIES
-** - riga 560: max-width:992px 
-** - riga 640: max-width:768px
-** - riga 690: max-width:576px
-** - riga 735: max-width:480px
-** - riga 800: max-width:450px
-** - riga 866: max-width:320px
-** - riga 900: max-height:700px
-** - riga 915: landscape mobiles
+** - RIGA 149: macrostruttura
+** - RIGA 190: sidebar
+** - RIGA 320: main
+** - RIGA 565: footer 
+** - RIGA 635: MEDIA QUERIES
 
 **============================================================================= */
 
 :root {
-    --color-dark: #141922;
-    --color-darkgrey: #282828;
-    --color-light: #ffffff;
-    --color-black: #000000;
-    --color-lightgrey: #c1c1c1;
-    --color-highlight: #9ae22d;
-    --color-red: #ca1717;
     --height-footer: 90px;
     --height-header: 80px;
     --p-inline-md: 20px;
@@ -41,6 +24,60 @@
     --gap-xs: 5px;
     --text-smaller: .8rem;
     --text-sm: .9rem;
+    /* main colors */
+    --color-dark: #141922;
+    --color-darkgrey: #282828;
+    --color-light: #ffffff;
+    --color-black: #000000;
+    --color-lightgrey: #c1c1c1;
+    --color-highlight: #9ae22d;
+    /* light mode */
+    --light-primary-text: var(--color-black);
+    --light-secondary-text: #000000e6;
+    --light-secondary-bg: var(--color-lightgrey);
+    --light-sidebar: #e0e0e0;
+    --light-header: var(--color-lightgrey);
+    --light-main-content: var(--color-light);
+    --light-footer: var(--color-lightgrey);
+    --light-highlight: #307749;
+    --light-library-bg: var(--color-lightgrey);
+    --light-filter: brightness(0) saturate(100%) invert(5%) sepia(4%) saturate(6699%) hue-rotate(181deg) brightness(96%) contrast(90%);
+    /* dark mode */
+    --dark-primary-text: var(--color-light);
+    --dark-secondary-text: var(--color-lightgrey);
+    --dark-secondary-bg: var(--color-lightgrey);
+    --dark-sidebar: var(--color-black);
+    --dark-header: var(--color-dark);
+    --dark-main-content: var(--color-dark);
+    --dark-footer: var(--color-darkgrey);
+    --dark-highlight: var(--color-highlight);
+    --dark-library-bg: rgba(255, 255, 255, 0.05);
+    --dark-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(201deg) brightness(105%) contrast(105%);
+    /* default theme (dark theme) */
+    --primary-text: var(--dark-primary-text);
+    --secondary-text: var(--dark-secondary-text);
+    --secondary-bg: var(--dark-secondary-bg);
+    --sidebar: var(--dark-sidebar);
+    --header: var(--dark-header);
+    --main-content: var(--dark-main-content);
+    --footer: var(--dark-footer);
+    --highlight: var(--dark-highlight);
+    --library-bg: var(--dark-library-bg);
+    --filter: var(--dark-filter);  
+}
+
+/* switch to light theme */
+#theme:checked~.wrapper {
+    --primary-text: var(--light-primary-text);
+    --secondary-text: var(--light-secondary-text);
+    --secondary-bg: var(--light-secondary-bg);
+    --sidebar: var(--light-sidebar);
+    --header: var(--light-header);
+    --main-content: var(--light-main-content);
+    --footer: var(--light-footer);
+    --highlight: var(--light-highlight);
+    --library-bg: var(--light-library-bg);
+    --filter: var(--light-filter);
 }
 
 /* debug */
@@ -70,6 +107,10 @@ a {
 img {
     display: block;
     width: 100%;
+}
+
+#sidebar img {
+    filter: var(--filter);
 }
 
 button {
@@ -108,19 +149,19 @@ input[type="checkbox"] {
 **============================================================================= */
 
 /* body */
-body {
-    font-family: "Montserrat", sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    color: var(--color-lightgrey);
-    overflow: hidden;
-}
+/* --light */
 
 /* wrapper */
 .wrapper {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--secondary-text);
+    overflow: hidden;
     height: 100dvh;
     min-width: 230px;
     overflow: hidden;
+    position: relative;
 }
 
 /* upper content */
@@ -132,7 +173,7 @@ body {
 
 /* footer */
 footer {
-    background: var(--color-darkgrey);
+    background: var(--footer);
     flex: 0 0 var(--height-footer);
     position: relative;
     z-index: 10000;
@@ -149,7 +190,7 @@ footer {
 
 /** MACROSTRUTTURA SIDEBAR*/
 #sidebar {
-    background: var(--color-black);
+    background: var(--sidebar);
     flex: 0 0 200px;
     padding-top: var(--p-block-sm);
     padding-bottom: var(--p-block-xs);
@@ -167,7 +208,7 @@ footer {
     bottom: 0;
     left: 0;
     padding-block: var(--p-block-xs);
-    background: var(--color-black);
+    background: var(--sidebar);
     padding-inline: var(--p-inline-sm);
 }
 
@@ -203,7 +244,7 @@ footer {
 }
 
 .sidebar-nav li input:checked~label {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 /* al click sull'elemento, compare un bordo laterale: trick radio-checked */
@@ -212,7 +253,7 @@ footer {
     content: "";
     display: block;
     height: 100%;
-    border: 2.3px solid var(--color-highlight);
+    border: 2.3px solid var(--highlight);
     border-radius: 30px;
     top: 0;
     left: calc(0px - var(--p-inline-sm));
@@ -227,7 +268,7 @@ footer {
     font-size: 2.3rem;
 }
 
-.playlist >:nth-child(1) > :last-child {
+.playlist>:nth-child(1)> :last-child {
     margin-block: var(--p-block-xs);
 }
 
@@ -238,7 +279,7 @@ footer {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     overflow: auto;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--library-bg);
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
@@ -254,7 +295,7 @@ footer {
 }
 
 .sidebar-bottom .profile .image {
-    background: var(--color-lightgrey);
+    background: var(--secondary-bg);
     border-radius: 50%;
     overflow: hidden;
 }
@@ -265,8 +306,10 @@ footer {
 .playlist ul li:hover,
 .sidebar-bottom>:not(hr):hover {
     cursor: pointer;
-    color: var(--color-light);
+    color: var(--primary-text);
 }
+
+
 
 /** =============================================================================
 
@@ -311,7 +354,7 @@ main .header {
 /* main content ha un altezza fissata calcolata come 
 spazio rimanente nella schermata tolto footer*/
 main .main-content {
-    background: var(--color-dark);
+    background: var(--main-content);
     height: calc(100dvh - (var(--height-footer)));
     padding-top: calc(var(--height-header) + var(--p-block-md));
     overflow-y: auto;
@@ -327,7 +370,7 @@ main .main-content {
 }
 
 .main-content .main-nav li:hover {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 .main-content .main-nav li label {
@@ -335,7 +378,7 @@ main .main-content {
 }
 
 .main-content .main-nav li input:checked~label {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 /* al click sull'elemento compare un bordo inferiore: trick radio-checked */
@@ -344,11 +387,12 @@ main .main-content {
     display: block;
     content: "";
     width: 70%;
-    border: 2px solid var(--color-highlight);
+    border: 2px solid var(--highlight);
     left: 50%;
     bottom: -4px;
     transform: translateX(-50%);
 }
+
 
 /** MAIN-CONTENT SECTIONS */
 /* generals */
@@ -359,7 +403,7 @@ main .main-content {
 
 .main-content .category-title h2,
 .main-content .playlist-title {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 .main-content .category-title h5 {
@@ -381,6 +425,27 @@ main .main-content {
     align-items: flex-start;
     position: relative;
     overflow-x: hidden;
+    border-radius: 4px;
+}
+
+/* effetto velatino per lo slider */
+.recents .card-list:before,
+.recents .card-list:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: -10px;
+    width: 10px;
+    box-shadow: 10px 0 40px 3px #000000;
+}
+
+.recents .card-list::after {
+    left: auto;
+    right: -10px;
+    box-shadow: -10px 0 40px 3px #000000;
+
 }
 
 /* animazione slider  */
@@ -395,7 +460,6 @@ main .main-content {
     animation-delay: calc((var(--speed) / var(--quantity)) * ((var(--position) - var(--quantity))));
     /*! delay-card1 < delay-card2 < . . . < delay-last-card = 0 */
     transition: all .3s ease;
-
 }
 
 @keyframes slider {
@@ -514,12 +578,12 @@ footer>div:not(.center) {
 }
 
 .left .icons>i:last-child:hover {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 /* se il cuoricino non è checkato (rosso), all'hover cambia color */
 .icons input:not(:checked)~label:hover {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 /* al click sul cuoricino, diventa rosso: trick radio checked */
@@ -555,7 +619,7 @@ footer .timebar {
 }
 
 .right i:hover {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 /* footer general hovers */
@@ -577,6 +641,11 @@ footer .bar {
     :root {
         --height-footer: 130px;
     }
+
+    /* switch label */
+    /* #switch-label {
+        display: none;
+    } */
 
     /** =========================================================================
     **  SIDEBAR 
@@ -608,7 +677,7 @@ footer .bar {
     .recents .card {
         width: calc((100% - (3 * var(--gap-md))) / 4);
     }
-    
+
     /* ridimensionamento font-size */
     .main-content .card-title {
         font-size: 80%;
@@ -631,6 +700,12 @@ footer .bar {
     /* tolgo animazione bounce */
     .recents .anim:hover {
         animation: none;
+    }
+
+    /* tolgo velatino */
+    .recents .card-list:before,
+    .recents .card-list:after {
+        display: none;
     }
 
     /** =========================================================================
@@ -672,10 +747,11 @@ footer .bar {
     .main-content .card-title {
         font-size: 70%;
     }
-     
+
     .main-content .card-list {
         gap: var(--gap-sm);
     }
+
     /* dimensione minima alle card, ridimensiono larghezza delle cards per farcene stare 4 */
     .main-content .card {
         min-width: calc((100% - (3 * var(--gap-sm))) / 4);

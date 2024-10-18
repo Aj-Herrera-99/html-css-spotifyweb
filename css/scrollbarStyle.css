@@ -8,6 +8,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--color-highlight);
+    background-color: var(--highlight);
     border-radius: 10px;
 }

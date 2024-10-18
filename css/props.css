@@ -35,7 +35,7 @@
 
 /* text format */
 .text-light {
-    color: var(--color-light);
+    color: var(--primary-text);
 }
 
 .text-center {
