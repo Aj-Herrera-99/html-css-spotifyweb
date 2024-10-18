@@ -448,7 +448,7 @@ main .main-content {
 
 }
 
-/* animazione slider  */
+/* animazione slider, per le recents card do una width senza considerare il gap  */
 .recents .card {
     --card-width: calc(100% / var(--quantity));
     width: var(--card-width);
@@ -464,13 +464,13 @@ main .main-content {
 
 @keyframes slider {
     from {
-        left: calc((100% - ((var(--position) - 1) * (100% / var(--quantity)))));
+        left: calc((100% - ((var(--position) - 1) * var(--card-width))));
         /** 100% meno (la posizione - 1 per la fetta di percentuale di ogni card */
         /* sposto da sinistra fino a spingere le cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno destro del container padre */
     }
 
     to {
-        left: calc((100% / var(--quantity)) * (var(--position) * -1));
+        left: calc(var(--card-width) * (var(--position) * -1));
         /** spinge da sinistra quanto? quanto la dimensione singola della card per un offset dato dal numero di cards precedenti*/
         /* NB: questo left sarà dunque un valore negativo -> spingo lE cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno sinistro del container padre*/
     }
