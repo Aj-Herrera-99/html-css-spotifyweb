@@ -450,9 +450,7 @@ main .main-content {
 
 /* animazione slider, per le recents card do una width senza considerare il gap  */
 .recents .card {
-    --card-width: calc(100% / var(--quantity));
-    width: var(--card-width);
-    position: relative;
+    width:  calc(100% / var(--quantity));
     --alpha: 0.4;
     /*! coefficiente per la velocita di animazione range (0, 1] */
     --speed: calc(var(--quantity) * 10s * var(--alpha));
@@ -464,15 +462,14 @@ main .main-content {
 
 @keyframes slider {
     from {
-        left: calc((100% - ((var(--position) - 1) * var(--card-width))));
-        /** 100% meno (la posizione - 1 per la fetta di percentuale di ogni card */
-        /* sposto da sinistra fino a spingere le cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno destro del container padre */
+        translate: calc(100% * (var(--quantity) - (var(--position) - 1) ));
+        /* sposto dalla sua posizione relativa fino a spingere le cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno destro del container padre */
     }
 
     to {
-        left: calc(var(--card-width) * (var(--position) * -1));
-        /** spinge da sinistra quanto? quanto la dimensione singola della card per un offset dato dal numero di cards precedenti*/
-        /* NB: questo left sarà dunque un valore negativo -> spingo lE cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno sinistro del container padre*/
+        translate: calc(-100% * var(--position) )
+        /** sposto quanto? quanto la dimensione massima della card per la sua posizione*/
+        /* NB: questo sarà dunque un valore negativo -> spingo lE cards (TUTTE UNO SOVRAPPOSTO ALL'ALTRO) sul bordo esterno sinistro del container padre*/
     }
 }
 
